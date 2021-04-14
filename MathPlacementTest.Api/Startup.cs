@@ -1,7 +1,10 @@
+using MathPlacementTest.Data;
+using MathPlacementTest.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -26,6 +29,9 @@ namespace MathPlacementTest.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddDbContext<MathTestDbContext>(o => o.UseMySQL(Configuration.GetConnectionString("MathDb")));
+
+            services.AddScoped<IStudentResultFetcherService, StudentResultFetcherService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
