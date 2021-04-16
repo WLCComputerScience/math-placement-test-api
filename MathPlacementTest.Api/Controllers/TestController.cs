@@ -7,13 +7,15 @@ using System.Threading.Tasks;
 
 namespace MathPlacementTest.Api.Controllers
 {
-    public class StudentController : Controller
+    [ApiController]
+    [Route("[controller]")]
+    public class TestController : ControllerBase
     {
         [HttpPost]
-        [Route("Create")]
-        public StudentCreateView Create([FromForm] string student)
+        [Route("GetQuestions")]
+        public int GetQuestions([FromForm] int TestId)
         {
-            return default;
+            return TestId;
         }
     }
 
