@@ -6,7 +6,7 @@ namespace MathPlacementTest.Services.Objects.Student
 {
     public class StudentQuestionaireInfoParams
     {
-        public List<string> CoursesTaken { get; set; }
+        public IEnumerable<PastCourse> CoursesTaken { get; set; }
 
         public string AdvancedCourse { get; set; }
 
