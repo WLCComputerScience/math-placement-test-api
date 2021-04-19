@@ -14,8 +14,7 @@ namespace MathPlacementTest.Api.Controllers
         private readonly IStudentCreateService _studentCreateService;
         public StudentController(IStudentCreateService studentCreateService)
         {
-            _studentCreateService = new StudentCreateService();
-            //_studentCreateService = studentCreateService;
+            _studentCreateService = studentCreateService;
         }
 
         [HttpPost]
