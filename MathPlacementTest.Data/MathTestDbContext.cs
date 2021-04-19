@@ -6,7 +6,7 @@ namespace MathPlacementTest.Data
     public class MathTestDbContext : DbContext
     {
         public DbSet<StudentData> studentData { get; set; }
-
+        public DbSet<Student> Students { get; set; }
         public MathTestDbContext(DbContextOptions<MathTestDbContext> options) : base(options)
         {
 
