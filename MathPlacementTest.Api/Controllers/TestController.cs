@@ -11,12 +11,20 @@ namespace MathPlacementTest.Api.Controllers
     [Route("[controller]")]
     public class TestController : ControllerBase
     {
+
+        private readonly ITestQuestionsFetcherService _testQuestionsFetcherService;
+
+        public TestController(ITestQuestionsFetcherService testQuestionsFetcherService)
+        {
+            _testQuestionsFetcherService = testQuestionsFetcherService;
+
+        }
+
         [HttpPost]
         [Route("GetQuestions")]
-        public int GetQuestions([FromForm] int TestId)
+        public TestQuestionView GetQuestions([FromForm] GetQuestionsParams getQuestionsParams)
         {
-            return TestId;
+            return _testQuestionsFetcherService.GetTestQuestions(getQuestionsParams.TestId);
         }
     }
-
 }

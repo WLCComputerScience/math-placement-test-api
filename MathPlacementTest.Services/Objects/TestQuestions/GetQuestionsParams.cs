@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
 namespace MathPlacementTest.Services
 {
-    public interface ITestQuestionsFetcherService
+    public class GetQuestionsParams
     {
-        TestQuestionView GetTestQuestions(int testId);
+        public int TestId { get; set; }
     }
 }
