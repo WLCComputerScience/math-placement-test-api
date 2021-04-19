@@ -12,4 +12,8 @@
     <ProjectReference Include="..\MathPlacementTest.Data\MathPlacementTest.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Services\StudentQuestionaireInfo\" />
+  </ItemGroup>
+
 </Project>
