@@ -24,9 +24,11 @@ namespace MathPlacementTest.Services
             _dbContext.Students.Add(student);
             _dbContext.SaveChanges();
 
+            var id = student.StudentId;
+
             StudentCreateView ret = new StudentCreateView
             {
-                StudentId = "1476766",
+                StudentId = id,
                 ResultMessage = "Student created sucessfully"
             };
             return ret;
