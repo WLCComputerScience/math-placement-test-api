@@ -1,29 +1,24 @@
 ﻿using MathPlacementTest.Data;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace MathPlacementTest.Services
 {
     public class StudentCreateService : IStudentCreateService
     {
-        private readonly MathTestDbContext _dbContext;
-
-        public StudentCreateService(MathTestDbContext dbContext)
+        private readonly IStudentCreateDataCreatorService _studentCreateDataCreator;
+        
+        public StudentCreateService(IStudentCreateDataCreatorService studentCreateDataCreatorService)
         {
-            _dbContext = dbContext;
+            _studentCreateDataCreator = studentCreateDataCreatorService;
         }
+
         public StudentCreateView CreateStudent(StudentCreateParams studentCreateParams)
         {
-            Student student = new Student()
-            {
-                FirstName = studentCreateParams.StudentFirstName,
-                LastName = studentCreateParams.StudentLastName,
-                WLCId = studentCreateParams.StudentWLCId
-            };
-            _dbContext.Students.Add(student);
-            _dbContext.SaveChanges();
 
+            Student student = _studentCreateDataCreator.DBCreateStudent(studentCreateParams);
             var id = student.StudentId;
 
             StudentCreateView ret = new StudentCreateView
