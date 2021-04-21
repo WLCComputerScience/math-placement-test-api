@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MathPlacementTest
+namespace MathPlacementTest.Data
 {
     public class PastCourse
     {
