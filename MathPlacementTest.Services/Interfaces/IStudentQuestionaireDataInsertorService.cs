@@ -6,8 +6,8 @@ using MathPlacementTest.Services.Objects.Test;
 
 namespace MathPlacementTest.Services
 {
-    public interface IStudentQuestionaireInfoCreatorService
+    public interface IStudentQuestionaireDataInsertorService
     {
-        public TestInfo AddQuestionaireInfo(StudentQuestionaireInfoParams studentQuestionaireInfoParams);
+        public TestInfo AddQuestionaireData(StudentQuestionaireInfoParams studentQuestionaireInfoParams);
     }
 }

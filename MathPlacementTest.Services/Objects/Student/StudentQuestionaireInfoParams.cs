@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using MathPlacementTest.Services.Objects.Courses;
 
 namespace MathPlacementTest.Services.Objects.Student
 {

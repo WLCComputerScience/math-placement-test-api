@@ -10,16 +10,19 @@ namespace MathPlacementTest.Services
 {
     public class StudentQuestionaireInfoCreatorService: IStudentQuestionaireInfoCreatorService
     {
-        private readonly MathTestDbContext _dbContext;
+        private readonly StudentQuestionaireDataInsertorService _dataInsertorService;
 
-        public StudentQuestionaireInfoCreatorService(MathTestDbContext dbContext)
+        public StudentQuestionaireInfoCreatorService(StudentQuestionaireDataInsertorService dataInsertorService)
         {
-            _dbContext = dbContext;
+            _dataInsertorService = dataInsertorService;
         }
 
         public TestInfo AddQuestionaireInfo(StudentQuestionaireInfoParams studentQuestionaireInfoParams)
         {
-            throw new NotImplementedException();
+
+            var hardCodedTest = _dataInsertorService.AddQuestionaireData(studentQuestionaireInfoParams);
+
+            return hardCodedTest;
         }
     }
 }

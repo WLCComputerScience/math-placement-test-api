@@ -13,6 +13,11 @@ namespace MathPlacementTest.Api.Controllers
     [Route("[controller]")]
     public class StudentController : Controller
     {
+        private readonly IStudentQuestionaireInfoCreatorService _studentQuestionaireInfoCreatorService;
+        public StudentController(IStudentQuestionaireInfoCreatorService studentQuestionaireInfoCreatorService)
+        {
+            _studentQuestionaireInfoCreatorService = studentQuestionaireInfoCreatorService;
+        }
         [HttpPost]
         [Route("Create")]
         public StudentCreateView Create([FromForm] string student)
@@ -24,11 +29,7 @@ namespace MathPlacementTest.Api.Controllers
         [Route("AddQuestionaireInfo")]
         public TestInfo AddQuestionaireInfo([FromForm] StudentQuestionaireInfoParams studentQuestionaireInfoParams)
         {
-            // Do things with studentQuestionaireInfoParams in order to determine what test to me
-            //
-
-            var hardCodedTest = new TestInfo() { TestName = "Test 1" };
-            return hardCodedTest;
+            return _studentQuestionaireInfoCreatorService.AddQuestionaireInfo(studentQuestionaireInfoParams);
         }
     }
 
