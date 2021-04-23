@@ -6,7 +6,7 @@ namespace MathPlacementTest.Services.Objects.Courses
 {
     public class PastCourse
     {
-        public string PastCourseId { get; set; }
+        public long PastCourseId { get; set; }
         public string Description { get; set; }
     }
 }

@@ -6,6 +6,6 @@ namespace MathPlacementTest.Services.Objects.Test
 {
     public class TestInfo
     {
-        public string TestName { get; set; }
+        public long TestId { get; set; }
     }
 }

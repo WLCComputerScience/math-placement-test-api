@@ -6,5 +6,7 @@ namespace MathPlacementTest.Data
 {
     public class CourseTaken
     {
+        public long StudentId { get; set; }
+        public long PastCourseId { get; set; }
     }
 }

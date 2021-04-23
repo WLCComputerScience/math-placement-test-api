@@ -20,9 +20,15 @@ namespace MathPlacementTest.Services
         public TestInfo AddQuestionaireInfo(StudentQuestionaireInfoParams studentQuestionaireInfoParams)
         {
 
-            var hardCodedTest = _dataInsertorService.AddQuestionaireData(studentQuestionaireInfoParams);
+            //var success = _dataInsertorService.AddQuestionaireData(studentQuestionaireInfoParams);
 
-            return hardCodedTest;
+            var testToReturn = new TestInfo() { TestId = -1 };
+           // if (!success) {
+               //return testToReturn;
+            //}
+
+            testToReturn.TestId = 2;
+            return testToReturn;
         }
     }
 }

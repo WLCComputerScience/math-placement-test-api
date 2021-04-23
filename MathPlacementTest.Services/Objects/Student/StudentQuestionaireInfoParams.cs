@@ -15,5 +15,6 @@ namespace MathPlacementTest.Services.Objects.Student
         public string DesiredClass { get; set; }
 
         public bool HadMathInLastYear { get; set; }
+        public long StudentId { get; set; }
     }
 }

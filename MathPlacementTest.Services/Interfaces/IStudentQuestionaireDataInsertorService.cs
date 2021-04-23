@@ -8,6 +8,6 @@ namespace MathPlacementTest.Services
 {
     public interface IStudentQuestionaireDataInsertorService
     {
-        public TestInfo AddQuestionaireData(StudentQuestionaireInfoParams studentQuestionaireInfoParams);
+        public bool AddQuestionaireData(StudentQuestionaireInfoParams studentQuestionaireInfoParams);
     }
 }
