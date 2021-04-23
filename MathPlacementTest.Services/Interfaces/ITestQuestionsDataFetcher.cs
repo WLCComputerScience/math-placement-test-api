@@ -8,5 +8,6 @@ namespace MathPlacementTest.Services
     public interface ITestQuestionsDataFetcher
     {
         public Test GetTest(int testId);
+        public IEnumerable<Questions> GetQuestions(int testId);
     }
 }

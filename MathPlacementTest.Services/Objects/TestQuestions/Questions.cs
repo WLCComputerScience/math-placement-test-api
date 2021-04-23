@@ -5,7 +5,7 @@ namespace MathPlacementTest.Services
 {
     public class Questions
     {
-        public int QuestionId { get; set; }
+        public long QuestionId { get; set; }
         public string Problem { get; set; }
     }
 }

@@ -17,20 +17,16 @@ namespace MathPlacementTest.Services
         public TestQuestionView GetTestQuestions(int testId)
         {
             var test = _testQuestionsDataFetcher.GetTest(testId);
-            var questions = ;
-            IEnumerable<Questions> q;
-            Questions newQuestions = new Questions()
-            {
-                QuestionId = 1,
-                Problem = "1+1"
-            };
+            IEnumerable<Questions> questions;
+
+            questions = _testQuestionsDataFetcher.GetQuestions(testId);
 
             TestQuestionView resultView = new TestQuestionView()
             {
                 TestId = test.TestId,
                 Title = test.Title,
                 TimeAllowed = test.TimeAllowed,
-                questions = 
+                questions = questions
             };
 
             return resultView;
