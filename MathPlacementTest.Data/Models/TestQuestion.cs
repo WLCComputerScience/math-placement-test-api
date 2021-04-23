@@ -6,6 +6,8 @@ namespace MathPlacementTest.Data
 {
     public class TestQuestion
     {
-        public int TestQuestionId { get; set; }
+        public long TestQuestionId { get; set; }
+        public long QuestionId { get; set; }
+        public long TestId { get; set; } 
     }
 }

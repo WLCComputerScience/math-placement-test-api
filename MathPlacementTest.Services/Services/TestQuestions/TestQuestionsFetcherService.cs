@@ -8,23 +8,29 @@ namespace MathPlacementTest.Services
 {
     public class TestQuestionsFetcherService : ITestQuestionsFetcherService
     {
+        private readonly ITestQuestionsDataFetcher _testQuestionsDataFetcher;
+        public TestQuestionsFetcherService(ITestQuestionsDataFetcher testQuestionsDataFetcher)
+        {
+            _testQuestionsDataFetcher = testQuestionsDataFetcher;
+        }
         
         public TestQuestionView GetTestQuestions(int testId)
         {
-            var result = ;
-
+            var test = _testQuestionsDataFetcher.GetTest(testId);
+            var questions = ;
+            IEnumerable<Questions> q;
             Questions newQuestions = new Questions()
             {
-                QuestionId = result.,
-                Problem = result.
+                QuestionId = 1,
+                Problem = "1+1"
             };
 
             TestQuestionView resultView = new TestQuestionView()
             {
-                TestId = result.,
-                Title = result.,
-                TimeAllowed = result.,
-                questions = newQuestions
+                TestId = test.TestId,
+                Title = test.Title,
+                TimeAllowed = test.TimeAllowed,
+                questions = 
             };
 
             return resultView;
