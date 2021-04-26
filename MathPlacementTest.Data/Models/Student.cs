@@ -11,10 +11,10 @@ namespace MathPlacementTest
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime InsertedOn { get; set; }
-        public string ChosenClass { get; set; }
+        public string ClassChosen { get; set; }
         public bool MathInLastYear { get; set; }
         public string DesiredClass { get; set; }
-        public string AdvancedClassGrade { get; set; }
+        public string MostAdvancedClassGrade { get; set; }
         public string MostAdvancedClass { get; set; }
     }
 }
