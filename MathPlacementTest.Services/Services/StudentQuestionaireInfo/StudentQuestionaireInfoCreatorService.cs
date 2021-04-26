@@ -10,9 +10,9 @@ namespace MathPlacementTest.Services
 {
     public class StudentQuestionaireInfoCreatorService: IStudentQuestionaireInfoCreatorService
     {
-        private readonly StudentQuestionaireDataInsertorService _dataInsertorService;
+        private readonly IStudentQuestionaireDataInsertorService _dataInsertorService;
 
-        public StudentQuestionaireInfoCreatorService(StudentQuestionaireDataInsertorService dataInsertorService)
+        public StudentQuestionaireInfoCreatorService(IStudentQuestionaireDataInsertorService dataInsertorService)
         {
             _dataInsertorService = dataInsertorService;
         }
@@ -20,12 +20,13 @@ namespace MathPlacementTest.Services
         public TestInfo AddQuestionaireInfo(StudentQuestionaireInfoParams studentQuestionaireInfoParams)
         {
 
-            //var success = _dataInsertorService.AddQuestionaireData(studentQuestionaireInfoParams);
+            var success = _dataInsertorService.AddQuestionaireData(studentQuestionaireInfoParams);
 
             var testToReturn = new TestInfo() { TestId = -1 };
-           // if (!success) {
-               //return testToReturn;
-            //}
+            if (!success)
+            {
+                return testToReturn;
+            }
 
             testToReturn.TestId = 2;
             return testToReturn;

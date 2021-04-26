@@ -18,7 +18,12 @@ namespace MathPlacementTest.Services
         }
         public bool AddQuestionaireData(StudentQuestionaireInfoParams studentQuestionaireInfoParams)
         {
-            var studentToUpdate = _dbContext.Students.Where(s => s.StudentId == studentQuestionaireInfoParams.StudentId).FirstOrDefault();
+            var studentToUpdate = new Student();
+            foreach(var student in _dbContext.Students)
+            {
+                Console.WriteLine(student.StudentId);
+            }
+           // var studentToUpdate = _dbContext.Students.Where(s => s.StudentId == studentQuestionaireInfoParams.StudentId).FirstOrDefault();
             if(studentToUpdate == null)
             {
                 return false;
@@ -26,7 +31,7 @@ namespace MathPlacementTest.Services
             studentToUpdate.DesiredClass = studentQuestionaireInfoParams.DesiredClass;
             studentToUpdate.MathInLastYear = studentQuestionaireInfoParams.HadMathInLastYear;
             studentToUpdate.MostAdvancedClass = studentQuestionaireInfoParams.AdvancedCourse;
-            studentToUpdate.AdvancedClassGrade = studentQuestionaireInfoParams.GradeInAdvancedCourse;
+            studentToUpdate.MostAdvancedClassGrade = studentQuestionaireInfoParams.GradeInAdvancedCourse;
             _dbContext.SaveChanges();
 
             foreach (var pastCourse in studentQuestionaireInfoParams.CoursesTaken)
