@@ -1,11 +1,28 @@
-﻿using System;
+﻿using MathPlacementTest.Services;
+using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace MathPlacementTest.Api.Controllers
 {
-    public class AdminController
+    [ApiController]
+    [Route("[controller]")]
+    public class AdminController : Controller
     {
+        private readonly IAdminUpdateStudentPlacement _adminUpdateStudentPlacement;
+        public AdminController(IAdminUpdateStudentPlacement adminUpdateStudentPlacement)
+        {
+            _adminUpdateStudentPlacement = adminUpdateStudentPlacement;
+        }
+
+        [HttpPost]
+        [Route("Update")]
+
+        public string updateStudentPlacement(UpdateStudentPlacementParams updateStudentPlacementParams)
+        {
+            return "";
+        }
     }
 }
