@@ -18,6 +18,15 @@ namespace MathPlacementTest.Services
         public StudentCreateView CreateStudent(StudentCreateParams studentCreateParams)
         {
             // Tests
+            if (studentCreateParams.StudentWLCId == 0)
+            {
+                StudentCreateView err = new StudentCreateView
+                {
+                    StudentId = -1,
+                    ResultMessage = "Student ID is 0"
+                };
+                return err;
+            }
             if (studentCreateParams.StudentWLCId < 1)
             {
                 StudentCreateView err = new StudentCreateView
