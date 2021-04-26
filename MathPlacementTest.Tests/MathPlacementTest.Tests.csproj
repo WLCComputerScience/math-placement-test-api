@@ -18,6 +18,16 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="AutoFixture.AutoMoq" Version="4.17.0" />
+    <PackageReference Include="AutoFixture" Version="4.17.0" />
+    <PackageReference Include="FluentAssertions" Version="5.10.3" />
+    <PackageReference Include="Moq" Version="4.16.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="TestQuestionsUnitTest\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MathPlacementTest.Services\MathPlacementTest.Services.csproj" />
+  </ItemGroup>
 </Project>

@@ -9,6 +9,7 @@ namespace MathPlacementTest.Services
     public class TestQuestionsFetcherService : ITestQuestionsFetcherService
     {
         private readonly ITestQuestionsDataFetcher _testQuestionsDataFetcher;
+
         public TestQuestionsFetcherService(ITestQuestionsDataFetcher testQuestionsDataFetcher)
         {
             _testQuestionsDataFetcher = testQuestionsDataFetcher;
@@ -16,10 +17,23 @@ namespace MathPlacementTest.Services
         
         public TestQuestionView GetTestQuestions(int testId)
         {
-            var test = _testQuestionsDataFetcher.GetTest(testId);
-            IEnumerable<Questions> questions;
+            if (testId <= 0)
+            {
+                return null;
+            }
 
-            questions = _testQuestionsDataFetcher.GetQuestions(testId);
+            var test = _testQuestionsDataFetcher.GetTest(testId);
+            var questions = _testQuestionsDataFetcher.GetQuestions(testId);
+
+            if (test == null)
+            {
+                return null;
+            }
+
+            if (questions.Count() == 0)
+            {
+                return null;
+            }
 
             TestQuestionView resultView = new TestQuestionView()
             {
