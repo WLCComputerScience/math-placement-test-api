@@ -6,6 +6,6 @@ namespace MathPlacementTest.Services
 {
     public interface IAdminUpdateStudentPlacement
     {
-
+        public AdminUpdateStudentPlacementView updateStudentPlacement(AdminUpdateStudentPlacementParams updateStudentPlacementParams);
     }
 }

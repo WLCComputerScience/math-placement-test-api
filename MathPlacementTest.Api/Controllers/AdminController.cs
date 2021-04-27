@@ -20,9 +20,9 @@ namespace MathPlacementTest.Api.Controllers
         [HttpPost]
         [Route("Update")]
 
-        public string updateStudentPlacement(UpdateStudentPlacementParams updateStudentPlacementParams)
+        public AdminUpdateStudentPlacementView updateStudentPlacement(AdminUpdateStudentPlacementParams updateStudentPlacementParams)
         {
-            return "";
+            return _adminUpdateStudentPlacement.updateStudentPlacement(updateStudentPlacementParams);
         }
     }
 }
