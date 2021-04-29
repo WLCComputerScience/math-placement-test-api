@@ -18,31 +18,36 @@ namespace MathPlacementTest.Services
         }
         public bool AddQuestionaireData(StudentQuestionaireInfoParams studentQuestionaireInfoParams)
         {
-            var studentToUpdate = new Student();
-            foreach(var student in _dbContext.Students)
-            {
-                Console.WriteLine(student.StudentId);
-            }
-           // var studentToUpdate = _dbContext.Students.Where(s => s.StudentId == studentQuestionaireInfoParams.StudentId).FirstOrDefault();
+           var studentToUpdate = _dbContext.Students.Where(s => s.StudentId == studentQuestionaireInfoParams.StudentId).FirstOrDefault();
             if(studentToUpdate == null)
             {
                 return false;
             }
-            studentToUpdate.DesiredClass = studentQuestionaireInfoParams.DesiredClass;
-            studentToUpdate.MathInLastYear = studentQuestionaireInfoParams.HadMathInLastYear;
-            studentToUpdate.MostAdvancedClass = studentQuestionaireInfoParams.AdvancedCourse;
-            studentToUpdate.MostAdvancedClassGrade = studentQuestionaireInfoParams.GradeInAdvancedCourse;
-            _dbContext.SaveChanges();
-
-            foreach (var pastCourse in studentQuestionaireInfoParams.CoursesTaken)
+            try
             {
-                var courseTaken = new CourseTaken() { 
-                    PastCourseId = pastCourse.PastCourseId, 
-                    StudentId = studentQuestionaireInfoParams.StudentId };
-                _dbContext.CoursesTaken.Add(courseTaken);
+                studentToUpdate.DesiredClass = studentQuestionaireInfoParams.DesiredClass;
+                studentToUpdate.MathInLastYear = studentQuestionaireInfoParams.HadMathInLastYear;
+                studentToUpdate.MostAdvancedClass = studentQuestionaireInfoParams.AdvancedCourse;
+                studentToUpdate.MostAdvancedClassGrade = studentQuestionaireInfoParams.GradeInAdvancedCourse;
                 _dbContext.SaveChanges();
+
+                foreach (var pastCourse in studentQuestionaireInfoParams.CoursesTaken)
+                {
+                    var courseTaken = new CourseTaken()
+                    {
+                        PastCourseId = pastCourse.PastCourseId,
+                        StudentId = studentQuestionaireInfoParams.StudentId
+                    };
+                    _dbContext.CoursesTaken.Add(courseTaken);
+                    _dbContext.SaveChanges();
+                }
+                return true;
             }
-            return true;
+            catch
+            {
+                // If it fails at any point, return false
+                return false;
+            }
         }
     }
 }
