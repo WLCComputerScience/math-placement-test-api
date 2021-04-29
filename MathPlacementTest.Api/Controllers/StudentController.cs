@@ -13,16 +13,19 @@ namespace MathPlacementTest.Api.Controllers
     [Route("[controller]")]
     public class StudentController : Controller
     {
+        private readonly IStudentCreateService _studentCreateService;
         private readonly IStudentQuestionaireInfoCreatorService _studentQuestionaireInfoCreatorService;
-        public StudentController(IStudentQuestionaireInfoCreatorService studentQuestionaireInfoCreatorService)
+        public StudentController(IStudentCreateService studentCreateService, IStudentQuestionaireInfoCreatorService studentQuestionaireInfoCreatorService)
         {
+            _studentCreateService = studentCreateService;
             _studentQuestionaireInfoCreatorService = studentQuestionaireInfoCreatorService;
         }
+
         [HttpPost]
         [Route("Create")]
-        public StudentCreateView Create([FromForm] string student)
+        public StudentCreateView CreateStudent([FromForm] StudentCreateParams studentCreateParams)
         {
-            return default;
+            return _studentCreateService.CreateStudent(studentCreateParams);
         }
 
         [HttpPost]

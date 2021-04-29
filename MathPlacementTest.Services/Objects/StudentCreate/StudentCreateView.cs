@@ -6,7 +6,7 @@ namespace MathPlacementTest.Services
 {
     public class StudentCreateView
     {
-        public int StudentId { get; set; }
+        public long StudentId { get; set; }
         public string ResultMessage { get; set; }
     }
 }
