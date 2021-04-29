@@ -31,8 +31,9 @@ namespace MathPlacementTest.Api
             services.AddControllers();
             services.AddDbContext<MathTestDbContext>(o => o.UseMySQL(Configuration.GetConnectionString("MathDb")));
 
-
             services.AddScoped<IStudentResultFetcherService, StudentResultFetcherService>();
+            services.AddScoped<IStudentQuestionaireDataInsertorService, StudentQuestionaireDataInsertorService>();
+            services.AddScoped<IStudentQuestionaireInfoCreatorService, StudentQuestionaireInfoCreatorService>();
             services.AddScoped<IStudentCreateService, StudentCreateService>();
             services.AddScoped<IStudentCreateDataCreatorService, StudentCreateDataCreatorService>();
         }
