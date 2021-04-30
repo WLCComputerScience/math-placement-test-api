@@ -7,44 +7,35 @@ using System.Text;
 using System.Linq;
 using PastCourse = MathPlacementTest.Services.Objects.Courses.PastCourse;
 
-namespace MathPlacementTest.Services.Services
+namespace MathPlacementTest.Services
 {
     public class GetPastCoursesService : IGetPastCoursesService
     {
-        private readonly MathTestDbContext _dbContext;
+        private readonly IGetPastCourseDataRetrieverService _getPastCourseDataRetrieverService;
 
-        public GetPastCoursesService(MathTestDbContext dbContext)
+        public GetPastCoursesService(IGetPastCourseDataRetrieverService getPastCourseDataRetrieverService)
         {
-            _dbContext = dbContext;
+            _getPastCourseDataRetrieverService = getPastCourseDataRetrieverService;
         }
         public IEnumerable<PastCourse> GetPastCourses(GetPastCoursesParams getPastCoursesParams)
         {
-            List<PastCourse> coursesToReturn = new List<PastCourse>();
             if(getPastCoursesParams == null)
             {
                 return null;
             }
-            //Get all CoursesTaken associated with the student id.
-
-            var courses = (from ct in _dbContext.CoursesTaken
-                           join pc in _dbContext.PastCourses
-                           on ct.PastCourseId equals pc.PastCourseId
-                           where ct.StudentId == getPastCoursesParams.StudentId
-                           select new
-                           {
-                               PastCourseId = ct.PastCourseId,
-                               Description = pc.Description,
-                               DisplayOrder = pc.DisplayOrder
-                           }).ToList();
-            var orderedCourses = courses.OrderBy(order => order.DisplayOrder).ToList();
-            //var studentPastCourses = _dbContext.CoursesTaken.Where(s => s.StudentId == getPastCoursesParams.StudentId).ToList();
-            //foreach(CourseTaken course in studentPastCourses)
-            //{
-            //    var pastCourseInfo = _dbContext.PastCourses.Where(p => p.PastCourseId == course.PastCourseId).FirstOrDefault();
-            //    //
-                
-            //}
-            throw new NotImplementedException();
+            try
+            {
+                //Get all CoursesTaken associated with the student id.
+                //Join with the pastcourse table to get full description and display order
+                List<PastCourse> courses = _getPastCourseDataRetrieverService.GetPastCourses(getPastCoursesParams.StudentId);
+                List<PastCourse> orderedCourses = courses.OrderBy(order => order.DisplayOrder).ToList();
+                return orderedCourses;
+            }
+            catch
+            {
+                //If it fails at anytime, return null
+                return null;
+            }
         }
     }
 }

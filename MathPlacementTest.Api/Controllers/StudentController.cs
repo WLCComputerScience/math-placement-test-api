@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using MathPlacementTest.Services.Objects.Student;
 using MathPlacementTest.Services.Objects.Test;
+using MathPlacementTest.Services.Objects.Courses;
 
 namespace MathPlacementTest.Api.Controllers
 {
@@ -39,7 +40,7 @@ namespace MathPlacementTest.Api.Controllers
 
         [HttpPost]
         [Route("GetPastCourses")]
-        public TestInfo GetPastCourses([FromForm] GetPastCoursesParams getPastCoursesParams)
+        public IEnumerable<PastCourse> GetPastCourses([FromForm] GetPastCoursesParams getPastCoursesParams)
         {
             return _getPastCoursesService.GetPastCourses(getPastCoursesParams);
         }
