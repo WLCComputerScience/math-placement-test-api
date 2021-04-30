@@ -19,7 +19,6 @@ namespace MathPlacementTest.Api.Controllers
 
         [HttpPost]
         [Route("Update")]
-
         public AdminUpdateStudentPlacementView updateStudentPlacement(AdminUpdateStudentPlacementParams updateStudentPlacementParams)
         {
             return _adminUpdateStudentPlacement.updateStudentPlacement(updateStudentPlacementParams);

@@ -15,7 +15,7 @@ namespace MathPlacementTest.Services
         }
         public AdminUpdateStudentPlacementView updateStudentPlacement(AdminUpdateStudentPlacementParams updateStudentPlacementParams)
         {
-            if(updateStudentPlacementParams.StudentId == 0)
+            if(updateStudentPlacementParams.StudentId == 0 || updateStudentPlacementParams.StudentId < 0)
             {
                 return null;
             }

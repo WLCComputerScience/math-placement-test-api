@@ -24,30 +24,64 @@ namespace MathPlacementTest.Tests
         public void updateStudentPlacement_GivenZeroStudentId_ReturnNull()
         {
             //Act
-
+            var service = fixture.Create<AdminStudentPlacementUpdateService>();
+            var studentPlacementParams = new AdminUpdateStudentPlacementParams
+            {
+                StudentId = 0,
+                ChosenClass = fixture.Create<string>()
+            };
+            var updatedStudentPlacement = service.updateStudentPlacement(studentPlacementParams);
 
             //Assert
+            updatedStudentPlacement.Should().BeNull();
+        }
 
+        [Fact]
+        public void updateStudentPlacement_GivenNegativeStudentId_ReturnNull()
+        {
+            //Act
+            var service = fixture.Create<AdminStudentPlacementUpdateService>();
+            var studentPlacementParams = new AdminUpdateStudentPlacementParams
+            {
+                StudentId = -1,
+                ChosenClass = fixture.Create<string>()
+            };
+            var updatedStudentPlacement = service.updateStudentPlacement(studentPlacementParams);
+
+            //Assert
+            updatedStudentPlacement.Should().BeNull();
         }
 
         [Fact]
         public void updateStudentPlacement_GivenNullChosenClass_ReturnNull()
         {
             //Act
-
+            var service = fixture.Create<AdminStudentPlacementUpdateService>();
+            var studentPlacementParams = new AdminUpdateStudentPlacementParams
+            {
+                StudentId = fixture.Create<int>(),
+                ChosenClass = null
+            };
+            var updatedStudentPlacement = service.updateStudentPlacement(studentPlacementParams);
 
             //Assert
-
+            updatedStudentPlacement.Should().BeNull();
         }
 
         [Fact]
         public void updateStudentPlacement_GivenEmptyChosenClass_ReturnNull()
         {
             //Act
-
+            var service = fixture.Create<AdminStudentPlacementUpdateService>();
+            var studentPlacementParams = new AdminUpdateStudentPlacementParams
+            {
+                StudentId = fixture.Create<int>(),
+                ChosenClass = ""
+            };
+            var updatedStudentPlacement = service.updateStudentPlacement(studentPlacementParams);
 
             //Assert
-
+            updatedStudentPlacement.Should().BeNull();
         }
     }
 }
