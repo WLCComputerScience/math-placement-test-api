@@ -24,11 +24,21 @@ namespace MathPlacementTest.Services
         public IEnumerable<Questions> GetQuestions(int testId)
         {
             var testQuestions = _dbContext.TestQuestions.Where(p => p.TestId == testId).ToList();
+            if (testQuestions.Count == 0)
+            {
+                return null;
+            }
             var questionsToInput = new List<Questions>();
 
             foreach (var testQuestion in testQuestions)
             {
                 var questions = _dbContext.Questions.Where(p => p.QuestionId == testQuestion.QuestionId).ToList();
+
+                if (questions.Count == 0)
+                {
+                    return null;
+                }
+
                 foreach (var question in questions)
                 {
                     Questions questionUpdated = new Questions()
