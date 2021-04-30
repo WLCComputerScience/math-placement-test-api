@@ -35,6 +35,10 @@ namespace MathPlacementTest.Api
             services.AddScoped<ITestQuestionsFetcherService, TestQuestionsFetcherService>();
             services.AddScoped<ITestQuestionsDataFetcher, TestQuestionsDataFetcher>();
 
+            services.AddScoped<IStudentQuestionaireDataInsertorService, StudentQuestionaireDataInsertorService>();
+            services.AddScoped<IStudentQuestionaireInfoCreatorService, StudentQuestionaireInfoCreatorService>();
+            services.AddScoped<IStudentCreateService, StudentCreateService>();
+            services.AddScoped<IStudentCreateDataCreatorService, StudentCreateDataCreatorService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

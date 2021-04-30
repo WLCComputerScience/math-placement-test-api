@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MathPlacementTest.Services.Objects.StudentInfo
+namespace MathPlacementTest.Tests
 {
-    public class StudentInfo
+    class Class1
     {
-
     }
 }
