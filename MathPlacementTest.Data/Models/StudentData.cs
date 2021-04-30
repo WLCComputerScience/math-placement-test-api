@@ -6,9 +6,9 @@ namespace MathPlacementTest.Data
 {
     public class StudentData
     {
-        public int StudentDataId { get; set; }
-        public int StudentId { get; set; }
-        public int NumberCorrect { get; set; }
-        public int TotalNumber { get; set; }
+        public long StudentDataId { get; set; }
+        public long StudentId { get; set; }
+        public long NumberCorrect { get; set; }
+        public long TotalNumber { get; set; }
     }
 }

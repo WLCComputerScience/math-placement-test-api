@@ -20,9 +20,9 @@ namespace MathPlacementTest.Services
 
             StudentResultView resultView = new StudentResultView()
             {
-                StudentId = result.StudentId,
-                NumberCorrect = result.NumberCorrect,
-                TotalNumber = result.TotalNumber
+                //StudentId = result.StudentId,
+                //NumberCorrect = result.NumberCorrect,
+                //TotalNumber = result.TotalNumber
             };
             return resultView;
         }
