@@ -21,7 +21,7 @@ namespace MathPlacementTest.Services
                 LastName = studentCreateParams.StudentLastName,
                 WLCId = studentCreateParams.StudentWLCId
             };
-            _dbContext.students.Add(student);
+            _dbContext.Students.Add(student);
             _dbContext.SaveChanges();
 
             return student;
