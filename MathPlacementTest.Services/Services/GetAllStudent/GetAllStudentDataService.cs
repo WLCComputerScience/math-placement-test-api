@@ -16,7 +16,7 @@ namespace MathPlacementTest.Services
         {
             List<GetAllStudentView> studentList = new List<GetAllStudentView>();
 
-            foreach (var student in _dbContext.students)
+            foreach (var student in _dbContext.Students)
             {
                 GetAllStudentView tmp = new GetAllStudentView
                 {
