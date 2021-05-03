@@ -17,11 +17,16 @@ namespace MathPlacementTest.Api.Controllers
         private readonly IStudentCreateService _studentCreateService;
         private readonly IStudentQuestionaireInfoCreatorService _studentQuestionaireInfoCreatorService;
         private readonly IGetPastCoursesService _getPastCoursesService;
-        public StudentController(IStudentCreateService studentCreateService, IStudentQuestionaireInfoCreatorService studentQuestionaireInfoCreatorService, IGetPastCoursesService getPastCoursesService)
+        private readonly IStudentQuestionResultService _studentQuestionResultService;
+        public StudentController(IStudentCreateService studentCreateService,
+            IStudentQuestionaireInfoCreatorService studentQuestionaireInfoCreatorService,
+            IGetPastCoursesService getPastCoursesService,
+            IStudentQuestionResultService studentQuestionResultService)
         {
             _studentCreateService = studentCreateService;
             _studentQuestionaireInfoCreatorService = studentQuestionaireInfoCreatorService;
             _getPastCoursesService = getPastCoursesService;
+            _studentQuestionResultService = studentQuestionResultService;
         }
 
         [HttpPost]
@@ -43,6 +48,13 @@ namespace MathPlacementTest.Api.Controllers
         public IEnumerable<PastCourse> GetPastCourses([FromForm] GetPastCoursesParams getPastCoursesParams)
         {
             return _getPastCoursesService.GetPastCourses(getPastCoursesParams);
+        }
+
+        [HttpPost]
+        [Route("InsertQuestionResult")]
+        public BooleanResponse InsertQuestionResult([FromForm] InsertStudentResultParams insertStudentResultParams)
+        {
+            return _studentQuestionResultService.CreateStudentQuestionResult(insertStudentResultParams);
         }
     }
 
