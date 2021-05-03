@@ -26,7 +26,7 @@ namespace MathPlacementTest.Services
 
             using(var context = _dbcontext)
             {
-                var studentToUpdate = context.students.Where(s => s.StudentId == updateStudentPlacementParams.StudentId).FirstOrDefault();
+                var studentToUpdate = context.Students.Where(s => s.StudentId == updateStudentPlacementParams.StudentId).FirstOrDefault();
 
                 if(studentToUpdate != null)
                 {
