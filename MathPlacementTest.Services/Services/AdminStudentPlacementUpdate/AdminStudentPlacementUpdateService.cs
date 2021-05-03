@@ -6,14 +6,14 @@ using System.Text;
 
 namespace MathPlacementTest.Services
 {
-    public class AdminStudentPlacementUpdateService
+    public class AdminStudentPlacementUpdateService : IAdminStudentPlacementUpdateService
     {
         private readonly MathTestDbContext _dbcontext;
         public AdminStudentPlacementUpdateService(MathTestDbContext dbContext)
         {
             _dbcontext = dbContext;
         }
-        public AdminUpdateStudentPlacementView updateStudentPlacement(AdminUpdateStudentPlacementParams updateStudentPlacementParams)
+        public AdminUpdateStudentPlacementView UpdateStudentPlacement(AdminUpdateStudentPlacementParams updateStudentPlacementParams)
         {
             if(updateStudentPlacementParams.StudentId == 0 || updateStudentPlacementParams.StudentId < 0)
             {

@@ -11,17 +11,17 @@ namespace MathPlacementTest.Api.Controllers
     [Route("[controller]")]
     public class AdminController : Controller
     {
-        private readonly IAdminUpdateStudentPlacement _adminUpdateStudentPlacement;
-        public AdminController(IAdminUpdateStudentPlacement adminUpdateStudentPlacement)
+        private readonly IAdminStudentPlacementUpdateService _adminUpdateStudentPlacement;
+        public AdminController(IAdminStudentPlacementUpdateService adminUpdateStudentPlacement)
         {
             _adminUpdateStudentPlacement = adminUpdateStudentPlacement;
         }
 
         [HttpPost]
         [Route("Update")]
-        public AdminUpdateStudentPlacementView updateStudentPlacement(AdminUpdateStudentPlacementParams updateStudentPlacementParams)
+        public AdminUpdateStudentPlacementView UpdateStudentPlacement([FromForm] AdminUpdateStudentPlacementParams updateStudentPlacementParams)
         {
-            return _adminUpdateStudentPlacement.updateStudentPlacement(updateStudentPlacementParams);
+            return _adminUpdateStudentPlacement.UpdateStudentPlacement(updateStudentPlacementParams);
         }
     }
 }
