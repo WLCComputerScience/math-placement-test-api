@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace MathPlacementTest
 {
     public class Student
     {
+        [Key]
         public long StudentId { get; set; }
         public int WLCId { get; set; }
         public string FirstName { get; set; }

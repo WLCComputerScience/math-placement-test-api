@@ -31,11 +31,19 @@ namespace MathPlacementTest.Api
             services.AddControllers();
             services.AddDbContext<MathTestDbContext>(o => o.UseMySQL(Configuration.GetConnectionString("MathDb")));
 
-
             services.AddScoped<IStudentResultFetcherService, StudentResultFetcherService>();
+            services.AddScoped<ITestQuestionsFetcherService, TestQuestionsFetcherService>();
+            services.AddScoped<ITestQuestionsDataFetcher, TestQuestionsDataFetcher>();
+
+            services.AddScoped<IStudentQuestionaireDataInsertorService, StudentQuestionaireDataInsertorService>();
+            services.AddScoped<IStudentQuestionaireInfoCreatorService, StudentQuestionaireInfoCreatorService>();
             services.AddScoped<IStudentCreateService, StudentCreateService>();
             services.AddScoped<IStudentCreateDataCreatorService, StudentCreateDataCreatorService>();
             services.AddScoped<IAdminStudentPlacementUpdateService, AdminStudentPlacementUpdateService>();
+            services.AddScoped<IGetAllStudentService, GetAllStudentService>();
+            services.AddScoped<IGetAllStudentDataService, GetAllStudentDataService>();
+            services.AddScoped<IGetPastCoursesService, GetPastCoursesService>();
+            services.AddScoped<IGetPastCourseDataRetrieverService, GetPastCoursesDataRetrieverService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

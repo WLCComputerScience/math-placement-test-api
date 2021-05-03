@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -7,7 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoFixture" Version="4.17.0" />
     <PackageReference Include="AutoFixture.AutoMoq" Version="4.17.0" />
+    <PackageReference Include="AutoMoq" Version="2.0.0" />
     <PackageReference Include="FluentAssertions" Version="5.10.3" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.1" />
     <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="8.0.22" />
@@ -23,7 +25,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="TestQuestionsUnitTest\" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\MathPlacementTest.Services\MathPlacementTest.Services.csproj" />
   </ItemGroup>
-
 </Project>
