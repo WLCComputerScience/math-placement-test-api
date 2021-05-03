@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace MathPlacementTest.Data
+namespace MathPlacementTest.Services
 {
-    public class StudentAnswer
+    public class InsertStudentResultParams
     {
-        [Key]
-        public long TestQuestionId { get; set; }
         public long StudentId { get; set; }
         public long QuestionId { get; set; }
-        public string StudentsAnswer { get; set; }
         public int TimeRemaining { get; set; }
+        public string Answer { get; set; }
     }
 }
