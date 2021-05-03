@@ -12,9 +12,11 @@ namespace MathPlacementTest.Api.Controllers
     public class AdminController : Controller
     {
         private readonly IGetAllStudentService _getAllStudentService;
-        public AdminController(IGetAllStudentService getAllStudentService)
+        private readonly IAdminStudentPlacementUpdateService _adminUpdateStudentPlacement;
+        public AdminController(IGetAllStudentService getAllStudentService, IAdminStudentPlacementUpdateService adminUpdateStudentPlacement)
         {
             _getAllStudentService = getAllStudentService;
+            _adminUpdateStudentPlacement = adminUpdateStudentPlacement;
         }
 
         [HttpPost]
@@ -30,6 +32,13 @@ namespace MathPlacementTest.Api.Controllers
         public List<GetAllStudentView> GetAllStudent()
         {
             return _getAllStudentService.GetAllStudent();
+        }
+
+        [HttpPost]
+        [Route("Update")]
+        public AdminUpdateStudentPlacementView UpdateStudentPlacement([FromForm] AdminUpdateStudentPlacementParams updateStudentPlacementParams)
+        {
+            return _adminUpdateStudentPlacement.UpdateStudentPlacement(updateStudentPlacementParams);
         }
     }
 }

@@ -39,6 +39,7 @@ namespace MathPlacementTest.Api
             services.AddScoped<IStudentQuestionaireInfoCreatorService, StudentQuestionaireInfoCreatorService>();
             services.AddScoped<IStudentCreateService, StudentCreateService>();
             services.AddScoped<IStudentCreateDataCreatorService, StudentCreateDataCreatorService>();
+            services.AddScoped<IAdminStudentPlacementUpdateService, AdminStudentPlacementUpdateService>();
             services.AddScoped<IGetAllStudentService, GetAllStudentService>();
             services.AddScoped<IGetAllStudentDataService, GetAllStudentDataService>();
             services.AddScoped<IGetPastCoursesService, GetPastCoursesService>();
