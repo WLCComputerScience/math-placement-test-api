@@ -53,9 +53,20 @@ namespace MathPlacementTest.Services
                 };
                 return err;
             }
-            
 
             Student student = _studentCreateDataCreator.DBCreateStudent(studentCreateParams);
+
+            // check if student was previously created within 6 months
+            if (student.WLCId == -1)
+            {
+                StudentCreateView err = new StudentCreateView
+                {
+                    StudentId = -1,
+                    ResultMessage = "Student has been created within the last 6 months"
+                };
+                return err;
+            }
+
             var id = student.StudentId;
 
             StudentCreateView ret = new StudentCreateView
