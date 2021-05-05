@@ -9,7 +9,7 @@ namespace MathPlacementTest.Data
         public DbSet<CourseTaken> CoursesTaken { get; set; }
         public DbSet<PastCourse> PastCourses { get; set; }
         public DbSet<Question> Questions { get; set; }
-        //public DbSet<StudentAnswer> StudentAnswers { get; set; }
+        public DbSet<StudentAnswer> StudentAnswers { get; set; }
         public DbSet<Student> Students { get; set; }
         public DbSet<TestQuestion> TestQuestions { get; set; }
         public DbSet<Test> Tests { get; set; }
