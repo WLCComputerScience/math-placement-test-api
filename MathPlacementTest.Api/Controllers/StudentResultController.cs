@@ -14,11 +14,12 @@ namespace MathPlacementTest.Api.Controllers
     {
 
         private readonly IStudentResultFetcherService _studentResultFetcherService;
+        private readonly IGetStudentResultSummary _studentResultsSummary;
 
-        public StudentResultController(IStudentResultFetcherService studentResultFetcherService)
+        public StudentResultController(IStudentResultFetcherService studentResultFetcherService, IGetStudentResultSummary studentResultSummary)
         {
             _studentResultFetcherService = studentResultFetcherService;
-
+            _studentResultsSummary = studentResultSummary;
         }
 
         [HttpPost]
@@ -26,6 +27,13 @@ namespace MathPlacementTest.Api.Controllers
         public StudentResultView Get([FromForm] StudentResultParams studentResultParams)
         {
             return _studentResultFetcherService.GetStudentResults(studentResultParams);
+        }
+
+        [HttpPost]
+        [Route("getStudentSummary")]
+        public GetStudentResultSummaryView GetStudentResultSummary([FromForm] GetStudentResultSummaryParams studentResultSummaryParams)
+        {
+            return _studentResultsSummary.GetStudentResultSummary(studentResultSummaryParams);
         }
     }
 }
