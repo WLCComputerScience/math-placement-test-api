@@ -44,6 +44,8 @@ namespace MathPlacementTest.Api
             services.AddScoped<IGetAllStudentDataService, GetAllStudentDataService>();
             services.AddScoped<IGetPastCoursesService, GetPastCoursesService>();
             services.AddScoped<IGetPastCourseDataRetrieverService, GetPastCoursesDataRetrieverService>();
+            services.AddScoped<IAdminGenerateReportService, AdminGenerateReportService>();
+            services.AddScoped<IAdminGenerateReportDataRetrieverService, AdminGenerateReportDataRetrieverService>();
             services.AddScoped<IStudentQuestionResultService, StudentQuestionResultService>();
             services.AddScoped<IStudentQuestionResultDataInsertor, StudentQuestionResultDataInsertor>();
         }

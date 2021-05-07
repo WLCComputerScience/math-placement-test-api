@@ -1,4 +1,5 @@
 ﻿using MathPlacementTest.Services;
+using MathPlacementTest.Services.Objects;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -13,10 +14,12 @@ namespace MathPlacementTest.Api.Controllers
     {
         private readonly IGetAllStudentService _getAllStudentService;
         private readonly IAdminStudentPlacementUpdateService _adminUpdateStudentPlacement;
-        public AdminController(IGetAllStudentService getAllStudentService, IAdminStudentPlacementUpdateService adminUpdateStudentPlacement)
+        private readonly IAdminGenerateReportService _adminGenerateReportService;
+        public AdminController(IGetAllStudentService getAllStudentService, IAdminStudentPlacementUpdateService adminUpdateStudentPlacement, IAdminGenerateReportService adminGenerateReportService)
         {
             _getAllStudentService = getAllStudentService;
             _adminUpdateStudentPlacement = adminUpdateStudentPlacement;
+            _adminGenerateReportService = adminGenerateReportService;
         }
 
         [HttpPost]
@@ -32,6 +35,14 @@ namespace MathPlacementTest.Api.Controllers
         public List<GetAllStudentView> GetAllStudent()
         {
             return _getAllStudentService.GetAllStudent();
+        }
+
+        [HttpPost]
+        [Route("GenerateReport")]
+        public bool GenerateReport([FromForm] GenerateReportParams generateReportParams)
+        {
+            //Returns an actual csv file to download
+            return _adminGenerateReportService.GenerateReport(generateReportParams);
         }
 
         [HttpPost]
