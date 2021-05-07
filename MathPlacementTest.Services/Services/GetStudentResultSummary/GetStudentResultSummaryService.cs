@@ -1,15 +1,17 @@
-﻿using System;
+﻿using MathPlacementTest.Data;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace MathPlacementTest.Services
 {
     public class GetStudentResultSummaryService : IGetStudentResultSummary
     {
-        private readonly StudentResultFetcherService _studentResultFetcherService;
-        public GetStudentResultSummaryService(StudentResultFetcherService studentResultFetcherService)
+        private readonly IStudentResultSummaryDataFetcher _studentResultSummaryDataFecther;
+        public GetStudentResultSummaryService(IStudentResultSummaryDataFetcher studentResultSummaryDataFetcher)
         {
-            _studentResultFetcherService = studentResultFetcherService;
+            _studentResultSummaryDataFecther = studentResultSummaryDataFetcher;
         }
         public GetStudentResultSummaryView GetStudentResultSummary(GetStudentResultSummaryParams studentResultSummaryParams)
         {
@@ -18,18 +20,19 @@ namespace MathPlacementTest.Services
                 return null;
             }
 
-            //get number of questions and number correct
+            var studentAnswers = _studentResultSummaryDataFecther.GetAllStudentQuestions(studentResultSummaryParams.StudentId);
 
-            var studentResultParams = new StudentResultParams
+            //get all questions with correct answers
+            //compare studentAnswers with correct answers
+            //grab that count
+
+            var studentResultSummaryView = new GetStudentResultSummaryView
             {
-                StudentId = studentResultSummaryParams.StudentId
+                NumCorrect = 12,
+                NumQuestions = studentAnswers.Count()
             };
 
-            var numCorrect = _studentResultFetcherService.GetStudentResults(studentResultParams).NumberCorrect;
-
-            //var numQuestions;
-
-            return null;
+            return studentResultSummaryView;
         }
     }
 }

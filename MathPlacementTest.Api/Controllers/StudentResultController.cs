@@ -12,21 +12,11 @@ namespace MathPlacementTest.Api.Controllers
     [Route("[controller]")]
     public class StudentResultController : ControllerBase
     {
-
-        private readonly IStudentResultFetcherService _studentResultFetcherService;
         private readonly IGetStudentResultSummary _studentResultsSummary;
 
-        public StudentResultController(IStudentResultFetcherService studentResultFetcherService, IGetStudentResultSummary studentResultSummary)
+        public StudentResultController(IGetStudentResultSummary studentResultSummary)
         {
-            _studentResultFetcherService = studentResultFetcherService;
             _studentResultsSummary = studentResultSummary;
-        }
-
-        [HttpPost]
-        [Route("getResult")]
-        public StudentResultView Get([FromForm] StudentResultParams studentResultParams)
-        {
-            return _studentResultFetcherService.GetStudentResults(studentResultParams);
         }
 
         [HttpPost]
