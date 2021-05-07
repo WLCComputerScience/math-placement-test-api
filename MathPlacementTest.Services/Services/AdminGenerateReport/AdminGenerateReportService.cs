@@ -8,6 +8,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace MathPlacementTest.Services
 {
     public class AdminGenerateReportService : IAdminGenerateReportService
@@ -34,10 +35,11 @@ namespace MathPlacementTest.Services
             }
             try
             {
-                WriteCSV(reportData, "MathPlacementTestReport.csv");
+                WriteCSV(reportData, @"..\..\PlacementTestReports\" + generateReportParams.FileName +".csv");
             }
             catch
             {
+                //If it fails to write, return false
                 return false;
             }
             return true;
@@ -49,6 +51,12 @@ namespace MathPlacementTest.Services
             Type itemType = typeof(T);
             var props = itemType.GetProperties(BindingFlags.Public | BindingFlags.Instance)
                                 .OrderBy(p => p.Name);
+
+            //Create folder if it does not exist
+            bool exists = System.IO.Directory.Exists(@"..\..\PlacementTestReports\");
+
+            if (!exists)
+                System.IO.Directory.CreateDirectory(@"..\..\PlacementTestReports\");
 
             using (var writer = new StreamWriter(path))
             {
