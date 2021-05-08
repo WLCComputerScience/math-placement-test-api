@@ -6,8 +6,8 @@ namespace MathPlacementTest.Services
 {
     public class StudentDetailsView
     {
-        public StudentInfo student { get; set; }
+        public StudentInfo Student { get; set; }
         public int TestId { get; set; }
-        public StudentAnswers studentAnswers { get; set; }
+        public IEnumerable<StudentAnswers> studentAnswers { get; set; }
     }
 }

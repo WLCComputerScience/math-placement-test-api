@@ -1,5 +1,7 @@
-﻿using System;
+﻿using MathPlacementTest.Data;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace MathPlacementTest.Services
@@ -15,33 +17,43 @@ namespace MathPlacementTest.Services
 
         public StudentDetailsView GetStudentDetails(int studentId)
         {
-            var date = new DateTime(2021, 4, 23);
+            if (studentId <= 0)
+            {
+                return null;
+            }
+
+            var student = _studentDetailsDataFetcher.GetStudent(studentId);
+
+            if(student == null)
+            {
+                return null;
+            }
 
             StudentInfo newStudent = new StudentInfo()
             {
-                FirstName = "Lucas",
-                LastName = "Roecker",
-                WLCId = 1476996,
-                InsertedOn = date,
-                MostAdvancedClass = "Calc BC",
-                AdvancedClassGrade = "A",
-                DesiredClass = "Calc 3",
-                MathInLastYear = true,
-                ChosenClass = "Calc infinity"
+                FirstName = student.FirstName,
+                LastName = student.LastName,
+                WLCId = student.WLCId,
+                InsertedOn = student.InsertedOn,
+                MostAdvancedClass = student.MostAdvancedClass,
+                AdvancedClassGrade = student.MostAdvancedClassGrade,
+                DesiredClass = student.DesiredClass,
+                MathInLastYear = student.MathInLastYear,
+                ChosenClass = student.ClassChosen
             };
 
-            StudentAnswers newstudentAnswers = new StudentAnswers()
+            var newStudentAnswers = _studentDetailsDataFetcher.GetStudentAnswers(studentId);
+
+            if (newStudentAnswers.Count() == 0)
             {
-                QuestionId = 1,
-                CorrectAnswer = "A",
-                StudentAnswer = "B"
-            };
+                return null;
+            }
 
             StudentDetailsView resultView = new StudentDetailsView()
             {
-                student = newStudent,
+                Student = newStudent,
                 TestId = 1,
-                studentAnswers = newstudentAnswers
+                studentAnswers = newStudentAnswers
             };
 
             return resultView;

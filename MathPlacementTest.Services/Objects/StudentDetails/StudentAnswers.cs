@@ -6,8 +6,8 @@ namespace MathPlacementTest.Services
 {
     public class StudentAnswers
     {
-        public int QuestionId { get; set; }
+        public long QuestionId { get; set; }
         public string CorrectAnswer { get; set; }
-        public string StudentAnswer { get; set; }
+        public string StudentsAnswer { get; set; }
     }
 }
