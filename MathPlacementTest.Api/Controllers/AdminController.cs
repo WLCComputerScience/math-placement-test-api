@@ -17,6 +17,7 @@ namespace MathPlacementTest.Api.Controllers
         private readonly IAdminStudentPlacementUpdateService _adminUpdateStudentPlacement;
         private readonly IAdminGenerateReportService _adminGenerateReportService;
         private readonly IAdminGenerateReportSenderService _adminGenerateReportSenderService;
+        private readonly IStudentDetailsFetcherService _studentDetailsFetcherService;
         public AdminController(IGetAllStudentService getAllStudentService, IAdminStudentPlacementUpdateService adminUpdateStudentPlacement, IAdminGenerateReportService adminGenerateReportService, IAdminGenerateReportSenderService adminGenerateReportSenderService, IStudentDetailsFetcherService studentDetailsFetcherService)
         {
             _getAllStudentService = getAllStudentService;
