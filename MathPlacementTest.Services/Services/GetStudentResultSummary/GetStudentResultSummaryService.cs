@@ -22,13 +22,23 @@ namespace MathPlacementTest.Services
 
             var studentAnswers = _studentResultSummaryDataFecther.GetAllStudentQuestions(studentResultSummaryParams.StudentId);
 
-            //get all questions with correct answers
-            //compare studentAnswers with correct answers
-            //grab that count
+            var questionIds = new List<long>();
+
+            var counter = 0;
+
+            var correctAnswers = _studentResultSummaryDataFecther.GetAllQuestionAnswers(questionIds);
+
+            foreach(var studAnswer in studentAnswers)
+            {
+                foreach(var corrAnswer in correctAnswers)
+                {
+                    if (studAnswer.ToString() == corrAnswer.ToString()) counter++;
+                }
+            }
 
             var studentResultSummaryView = new GetStudentResultSummaryView
             {
-                NumCorrect = 12,
+                NumCorrect = counter,
                 NumQuestions = studentAnswers.Count()
             };
 
