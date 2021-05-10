@@ -49,6 +49,9 @@ namespace MathPlacementTest.Api
             services.AddScoped<IStudentQuestionResultService, StudentQuestionResultService>();
             services.AddScoped<IStudentQuestionResultDataInsertor, StudentQuestionResultDataInsertor>();
             services.AddScoped<IAdminGenerateReportSenderService, AdminGenerateReportSenderService>();
+
+            services.AddMvcCore().AddApiExplorer();
+            services.AddSwaggerGen();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -58,6 +61,16 @@ namespace MathPlacementTest.Api
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            // Enable middleware to serve generated Swagger as a JSON endpoint.
+            app.UseSwagger();
+
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
+            // specifying the Swagger JSON endpoint.
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Math Placement Test API V1");
+            });
 
             app.UseHttpsRedirection();
 
