@@ -15,11 +15,13 @@ namespace MathPlacementTest.Api.Controllers
         private readonly IGetAllStudentService _getAllStudentService;
         private readonly IAdminStudentPlacementUpdateService _adminUpdateStudentPlacement;
         private readonly IAdminGenerateReportService _adminGenerateReportService;
-        public AdminController(IGetAllStudentService getAllStudentService, IAdminStudentPlacementUpdateService adminUpdateStudentPlacement, IAdminGenerateReportService adminGenerateReportService)
+        private readonly IAdminGenerateReportSenderService _adminGenerateReportSenderService;
+        public AdminController(IGetAllStudentService getAllStudentService, IAdminStudentPlacementUpdateService adminUpdateStudentPlacement, IAdminGenerateReportService adminGenerateReportService, IAdminGenerateReportSenderService adminGenerateReportSenderService)
         {
             _getAllStudentService = getAllStudentService;
             _adminUpdateStudentPlacement = adminUpdateStudentPlacement;
             _adminGenerateReportService = adminGenerateReportService;
+            _adminGenerateReportSenderService = adminGenerateReportSenderService;
         }
 
         [HttpPost]
@@ -39,10 +41,10 @@ namespace MathPlacementTest.Api.Controllers
 
         [HttpPost]
         [Route("GenerateReport")]
-        public bool GenerateReport([FromForm] GenerateReportParams generateReportParams)
+        public FileStreamResult GenerateReport([FromForm] GenerateReportParams generateReportParams)
         {
             //Returns an actual csv file to download
-            return _adminGenerateReportService.GenerateReport(generateReportParams);
+            return _adminGenerateReportSenderService.SendFile(generateReportParams);
         }
 
         [HttpPost]

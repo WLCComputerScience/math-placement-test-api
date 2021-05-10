@@ -48,6 +48,7 @@ namespace MathPlacementTest.Api
             services.AddScoped<IAdminGenerateReportDataRetrieverService, AdminGenerateReportDataRetrieverService>();
             services.AddScoped<IStudentQuestionResultService, StudentQuestionResultService>();
             services.AddScoped<IStudentQuestionResultDataInsertor, StudentQuestionResultDataInsertor>();
+            services.AddScoped<IAdminGenerateReportSenderService, AdminGenerateReportSenderService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
