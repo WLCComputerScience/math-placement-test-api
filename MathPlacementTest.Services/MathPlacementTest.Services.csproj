@@ -19,5 +19,7 @@
   <ItemGroup>
     <Folder Include="Objects\TestQuestions\" />
     <Folder Include="Services\TestQuestions\" />
+    <Folder Include="Objects\StudentDetails\" />
+    <Folder Include="Services\StudentDetails\" />
   </ItemGroup>
 </Project>
