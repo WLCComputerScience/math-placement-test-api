@@ -21,10 +21,25 @@ namespace MathPlacementTest.Services
             return student;
         }
 
-        //public Test GetTestId(int studentId)
-        //{
-            
-        //}
+        public string GetTestName(int studentId)
+        {
+            var studentsWithTests = (from s in _dbContext.Students
+                                     where s.StudentId == studentId
+                                     join t in _dbContext.Tests
+                                     on s.TestTaken equals t.TestId
+                                     select new
+                                     {
+                                         Title = t.Title
+                                     }
+                                     ).FirstOrDefault();
+
+            if (studentsWithTests == null)
+            {
+                return "No TestTaken";
+            }
+
+            return studentsWithTests.Title;
+        }
 
         public IEnumerable<StudentAnswers> GetStudentAnswers(int studentId)
         {

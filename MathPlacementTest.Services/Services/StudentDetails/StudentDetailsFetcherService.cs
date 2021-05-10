@@ -24,7 +24,7 @@ namespace MathPlacementTest.Services
 
             var student = _studentDetailsDataFetcher.GetStudent(studentId);
 
-            if(student == null)
+            if (student == null)
             {
                 return null;
             }
@@ -44,15 +44,12 @@ namespace MathPlacementTest.Services
 
             var newStudentAnswers = _studentDetailsDataFetcher.GetStudentAnswers(studentId);
 
-            if (newStudentAnswers.Count() == 0)
-            {
-                return null;
-            }
+            var test = _studentDetailsDataFetcher.GetTestName(studentId);
 
             StudentDetailsView resultView = new StudentDetailsView()
             {
                 Student = newStudent,
-                TestId = 1,
+                Title = test,
                 studentAnswers = newStudentAnswers
             };
 

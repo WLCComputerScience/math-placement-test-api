@@ -18,5 +18,6 @@ namespace MathPlacementTest
         public string DesiredClass { get; set; }
         public string MostAdvancedClassGrade { get; set; }
         public string MostAdvancedClass { get; set; }
+        public long? TestTaken { get; set; }
     }
 }
