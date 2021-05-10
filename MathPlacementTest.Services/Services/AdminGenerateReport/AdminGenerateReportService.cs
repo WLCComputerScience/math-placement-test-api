@@ -23,7 +23,8 @@ namespace MathPlacementTest.Services
         {
             //Return true if report is generated and saved to file
             //False otherwise
-            if(generateReportParams == null)
+            if(generateReportParams == null || generateReportParams.FileName == "" || generateReportParams.FileName == null ||
+                generateReportParams.EndDate == DateTime.MinValue || generateReportParams.StartDate == DateTime.MinValue)
             {
                 return false;
             }
