@@ -1,7 +1,11 @@
-# math-placement-test-api
-# testing connection
-# Josh was here: Testing connection
-# Lucas was here!
-# Korby was here 
-
-# Sam is also here ^ this is dylan
+# Math Placement Test API Documentation
+## Create Student
+### URI: /student/create
+### Request:
+```
+{
+    "FirstName" : "John",
+    "LastName"  : "Doe",
+    "WLCId" : 123456
+}
+```
