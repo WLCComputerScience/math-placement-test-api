@@ -1,11 +1,5 @@
 # Math Placement Test API Documentation
-## Create Student
-### URI: /student/create
-### Request:
-```
-{
-    "FirstName" : "John",
-    "LastName"  : "Doe",
-    "WLCId" : 123456
-}
-```
+## Purpose:
+This API will be used for the Math Placement Test. 
+## Documentation:
+Swagger documentation is generated when running the project.
