@@ -6,6 +6,6 @@ namespace MathPlacementTest.Services
 {
     public interface IStudentDetailsFetcherService
     {
-        StudentDetailsView GetStudentDetails(int studentId);
+        StudentDetailsView GetStudentDetails(GetStudentParams getStudentParams);
     }
 }

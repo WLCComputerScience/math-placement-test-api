@@ -15,14 +15,14 @@ namespace MathPlacementTest.Services
             _studentDetailsDataFetcher = studentDetailsDataFetcher;
         }
 
-        public StudentDetailsView GetStudentDetails(int studentId)
+        public StudentDetailsView GetStudentDetails(GetStudentParams getStudentParams)
         {
-            if (studentId <= 0)
+            if (getStudentParams.StudentId <= 0)
             {
                 return null;
             }
 
-            var student = _studentDetailsDataFetcher.GetStudent(studentId);
+            var student = _studentDetailsDataFetcher.GetStudent(getStudentParams);
 
             if (student == null)
             {
@@ -42,9 +42,9 @@ namespace MathPlacementTest.Services
                 ChosenClass = student.ClassChosen
             };
 
-            var newStudentAnswers = _studentDetailsDataFetcher.GetStudentAnswers(studentId);
+            var newStudentAnswers = _studentDetailsDataFetcher.GetStudentAnswers(getStudentParams);
 
-            var test = _studentDetailsDataFetcher.GetTestName(studentId);
+            var test = _studentDetailsDataFetcher.GetTestName(getStudentParams);
 
             StudentDetailsView resultView = new StudentDetailsView()
             {

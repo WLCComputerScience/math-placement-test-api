@@ -15,15 +15,15 @@ namespace MathPlacementTest.Services
             _testQuestionsDataFetcher = testQuestionsDataFetcher;
         }
         
-        public TestQuestionView GetTestQuestions(int testId)
+        public TestQuestionView GetTestQuestions(GetQuestionsParams getQuestionsParams)
         {
-            if (testId <= 0)
+            if (getQuestionsParams.TestId <= 0)
             {
                 return null;
             }
 
-            var test = _testQuestionsDataFetcher.GetTest(testId);
-            var questions = _testQuestionsDataFetcher.GetQuestions(testId);
+            var test = _testQuestionsDataFetcher.GetTest(getQuestionsParams);
+            var questions = _testQuestionsDataFetcher.GetQuestions(getQuestionsParams);
 
             if (test == null)
             {

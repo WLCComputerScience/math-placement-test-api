@@ -6,6 +6,6 @@ namespace MathPlacementTest.Services
 {
     public interface ITestQuestionsFetcherService
     {
-        TestQuestionView GetTestQuestions(int testId);
+        TestQuestionView GetTestQuestions(GetQuestionsParams getQuestionsParams);
     }
 }
