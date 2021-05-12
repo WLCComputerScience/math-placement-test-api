@@ -55,7 +55,7 @@ namespace MathPlacementTest.Services
             }
             else if (studentQuestionaireInfoParams.CoursesTaken.Any(course => course.PastCourseId == 1))
             {
-                //give trug test if trigh in past courses
+                //give trig test if trig in past courses
                 testToReturn.TestId = 2;
             }
             else if (studentQuestionaireInfoParams.CoursesTaken.Any(course => course.PastCourseId == 4))
