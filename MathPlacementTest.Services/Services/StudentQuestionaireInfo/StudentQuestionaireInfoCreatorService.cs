@@ -81,6 +81,16 @@ namespace MathPlacementTest.Services
                 }
             }
 
+            //Add TestTaken to database after we determine what it is
+            success = _dataInsertorService.AddTestTakenData(studentQuestionaireInfoParams ,testToReturn);
+
+            if (!success)
+            {
+                //If database fails to save, return invalid test
+                testToReturn.TestId = -1;
+                return testToReturn;
+            }
+
             return testToReturn;
         }
     }

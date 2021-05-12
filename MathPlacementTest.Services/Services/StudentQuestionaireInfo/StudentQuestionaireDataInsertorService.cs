@@ -49,5 +49,29 @@ namespace MathPlacementTest.Services
                 return false;
             }
         }
+
+        public bool AddTestTakenData(StudentQuestionaireInfoParams studentQuestionaireInfoParams, TestInfo testInfo)
+        {
+            if(testInfo == null || studentQuestionaireInfoParams == null)
+            {
+                return false;
+            }
+
+            var studentToUpdate = _dbContext.Students.Where(s => s.StudentId == studentQuestionaireInfoParams.StudentId).FirstOrDefault();
+            if (studentToUpdate == null)
+            {
+                return false;
+            }
+            try
+            {
+                studentToUpdate.TestTaken = testInfo.TestId;
+                _dbContext.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }
