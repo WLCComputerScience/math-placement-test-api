@@ -24,7 +24,7 @@ namespace MathPlacementTest.Api.Controllers
         [Route("GetQuestions")]
         public TestQuestionView GetQuestions([FromForm] GetQuestionsParams getQuestionsParams)
         {
-            return _testQuestionsFetcherService.GetTestQuestions(getQuestionsParams.TestId);
+            return _testQuestionsFetcherService.GetTestQuestions(getQuestionsParams);
         }
     }
 }

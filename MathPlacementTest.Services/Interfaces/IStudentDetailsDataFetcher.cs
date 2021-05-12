@@ -7,8 +7,8 @@ namespace MathPlacementTest.Services
 {
     public interface IStudentDetailsDataFetcher
     {
-        public Student GetStudent(int studentId);
-        public string GetTestName(int studentId);
-        public IEnumerable<StudentAnswers> GetStudentAnswers(int studentId);
+        public Student GetStudent(GetStudentParams getStudentParams);
+        public string GetTestName(GetStudentParams getStudentParams);
+        public IEnumerable<StudentAnswers> GetStudentAnswers(GetStudentParams getStudentParams);
     }
 }
