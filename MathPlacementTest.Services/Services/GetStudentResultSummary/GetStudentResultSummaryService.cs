@@ -22,7 +22,9 @@ namespace MathPlacementTest.Services
 
             var studentAnswers = _studentResultSummaryDataFecther.GetAllStudentQuestions(studentResultSummaryParams.StudentId);
 
-            var questionIds = new List<long>();
+            List<long> questionIds = studentAnswers
+                .Select(q => q.QuestionId)
+                .ToList();
 
             var counter = 0;
 
@@ -30,10 +32,10 @@ namespace MathPlacementTest.Services
 
             foreach(var studAnswer in studentAnswers)
             {
-                foreach(var corrAnswer in correctAnswers)
-                {
-                    if (studAnswer.ToString() == corrAnswer.ToString()) counter++;
-                }
+                var answerFound = correctAnswers
+                    .Where(a => a.QuestionId == studAnswer.QuestionId && a.CorrectAnswer.ToUpper().Trim() == studAnswer.StudentAnswer.ToUpper().Trim())
+                    .FirstOrDefault();
+                counter = answerFound == null ? counter : counter + 1;
             }
 
             var studentResultSummaryView = new GetStudentResultSummaryView

@@ -16,22 +16,20 @@ namespace MathPlacementTest.Services
 
         public IEnumerable<QuestionAnswer> GetAllQuestionAnswers(IEnumerable<long> questionIds)
         {
-            //dbcontext.questions
-            //use linq statement to find all questions with an id in that list
-            //return those questions
-            var questionAnswers = new List<QuestionAnswer>();
+            var questionAnswers = _dbcontext.Questions
+                .Where(q => questionIds.Any(x => x == q.QuestionId))
+                .Select(q => new QuestionAnswer() { QuestionId = q.QuestionId, CorrectAnswer = q.CorrectAnswer })
+                .ToList();
 
-            foreach(var id in questionIds)
-            {
-                var answer = _dbcontext.Questions.Where(a => a.QuestionId == id).Select(a => new QuestionAnswer() { CorrectAnswer = a.CorrectAnswer }).ToList();
-                questionAnswers.Add(answer);
-            }
             return questionAnswers;
         }
 
         public IEnumerable<StudentQuestionResult> GetAllStudentQuestions(long studentId)
         {
-            var studentAnswers = _dbcontext.StudentAnswers.Where(s => s.StudentId == studentId).Select(s => new StudentQuestionResult() {QuestionId=s.QuestionId, StudentAnswer=s.StudentsAnswer }).ToList();
+            var studentAnswers = _dbcontext.StudentAnswers
+                .Where(s => s.StudentId == studentId)
+                .Select(s => new StudentQuestionResult() {QuestionId=s.QuestionId, StudentAnswer=s.StudentsAnswer })
+                .ToList();
 
             return studentAnswers;
         }
