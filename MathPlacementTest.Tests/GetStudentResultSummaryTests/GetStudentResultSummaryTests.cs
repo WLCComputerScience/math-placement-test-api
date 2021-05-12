@@ -9,7 +9,7 @@ using Moq;
 using MathPlacementTest;
 using MathPlacementTest.Services;
 
-namespace MathPlacementTest.Test
+namespace MathPlacementTest.Tests
 {
     public class GetStudentResultSummaryTests
     {
