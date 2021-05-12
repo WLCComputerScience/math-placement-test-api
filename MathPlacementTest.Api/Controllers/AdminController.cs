@@ -16,13 +16,16 @@ namespace MathPlacementTest.Api.Controllers
         private readonly IGetAllStudentService _getAllStudentService;
         private readonly IAdminStudentPlacementUpdateService _adminUpdateStudentPlacement;
         private readonly IAdminGenerateReportService _adminGenerateReportService;
-        private readonly IAdminGenerateReportSenderService _adminGenerateReportSenderService;
-        private readonly IStudentDetailsFetcherService _studentDetailsFetcherService;
-        public AdminController(IGetAllStudentService getAllStudentService, IAdminStudentPlacementUpdateService adminUpdateStudentPlacement, IAdminGenerateReportService adminGenerateReportService, IAdminGenerateReportSenderService adminGenerateReportSenderService, IStudentDetailsFetcherService studentDetailsFetcherService)
+        private readonly IEmailReportService _emailReportService;
+        public AdminController(IGetAllStudentService getAllStudentService,
+            IAdminStudentPlacementUpdateService adminUpdateStudentPlacement, 
+            IAdminGenerateReportService adminGenerateReportService,
+            IEmailReportService emailReportService)
         {
             _getAllStudentService = getAllStudentService;
             _adminUpdateStudentPlacement = adminUpdateStudentPlacement;
             _adminGenerateReportService = adminGenerateReportService;
+            _emailReportService = emailReportService;
             _adminGenerateReportSenderService = adminGenerateReportSenderService;
             _studentDetailsFetcherService = studentDetailsFetcherService;
         }
@@ -48,6 +51,12 @@ namespace MathPlacementTest.Api.Controllers
         {
             //Returns an actual csv file to download
             return _adminGenerateReportSenderService.SendFile(generateReportParams);
+        }
+        [HttpPost]
+        [Route("EmailReport")]
+        public bool EmailReport([FromForm] EmailReportParams emailReportParams)
+        {
+            return _emailReportService.EmailReport(emailReportParams);
         }
 
         [HttpPost]

@@ -34,6 +34,7 @@ namespace MathPlacementTest.Api
             services.AddScoped<IStudentResultFetcherService, StudentResultFetcherService>();
             services.AddScoped<ITestQuestionsFetcherService, TestQuestionsFetcherService>();
             services.AddScoped<ITestQuestionsDataFetcher, TestQuestionsDataFetcher>();
+            services.AddScoped<IEmailReportService, EmailReportService>();
 
             services.AddScoped<IStudentQuestionaireDataInsertorService, StudentQuestionaireDataInsertorService>();
             services.AddScoped<IStudentQuestionaireInfoCreatorService, StudentQuestionaireInfoCreatorService>();
