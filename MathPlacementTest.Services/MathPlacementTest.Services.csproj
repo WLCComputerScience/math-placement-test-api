@@ -22,5 +22,7 @@
     <Folder Include="Services\TestQuestions\" />
     <Folder Include="Objects\StudentDetails\" />
     <Folder Include="Services\StudentDetails\" />
+    <Folder Include="Services\InfoGetPastCourses\" />
+    <Folder Include="Objects\PastCourses\" />
   </ItemGroup>
 </Project>
