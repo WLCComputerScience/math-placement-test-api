@@ -1,4 +1,4 @@
-﻿using MathPlacementTest.Services;
+using MathPlacementTest.Services;
 using MathPlacementTest.Services.Objects;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -10,6 +10,7 @@ namespace MathPlacementTest.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+
     public class AdminController : Controller
     {
         private readonly IGetAllStudentService _getAllStudentService;
@@ -25,7 +26,8 @@ namespace MathPlacementTest.Api.Controllers
             _adminUpdateStudentPlacement = adminUpdateStudentPlacement;
             _adminGenerateReportService = adminGenerateReportService;
             _emailReportService = emailReportService;
-
+            _adminGenerateReportSenderService = adminGenerateReportSenderService;
+            _studentDetailsFetcherService = studentDetailsFetcherService;
         }
 
         [HttpPost]
@@ -45,10 +47,10 @@ namespace MathPlacementTest.Api.Controllers
 
         [HttpPost]
         [Route("GenerateReport")]
-        public bool GenerateReport([FromForm] GenerateReportParams generateReportParams)
+        public FileStreamResult GenerateReport([FromForm] GenerateReportParams generateReportParams)
         {
             //Returns an actual csv file to download
-            return _adminGenerateReportService.GenerateReport(generateReportParams);
+            return _adminGenerateReportSenderService.SendFile(generateReportParams);
         }
         [HttpPost]
         [Route("EmailReport")]
@@ -62,6 +64,13 @@ namespace MathPlacementTest.Api.Controllers
         public AdminUpdateStudentPlacementView UpdateStudentPlacement([FromForm] AdminUpdateStudentPlacementParams updateStudentPlacementParams)
         {
             return _adminUpdateStudentPlacement.UpdateStudentPlacement(updateStudentPlacementParams);
+        }
+        
+        [HttpPost]
+        [Route("GetStudentDetails")]
+        public StudentDetailsView GetStudentDetails([FromForm] GetStudentParams getStudentParams)
+        {
+            return _studentDetailsFetcherService.GetStudentDetails(getStudentParams.StudentId);
         }
     }
 }

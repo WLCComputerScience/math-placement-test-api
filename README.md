@@ -1,7 +1,5 @@
-# math-placement-test-api
-# testing connection
-# Josh was here: Testing connection
-# Lucas was here!
-# Korby was here 
-
-# Sam is also here ^ this is dylan
+# Math Placement Test API Documentation
+## Purpose:
+This API will be used for the Math Placement Test. 
+## Documentation:
+Swagger documentation is generated when running the project.
