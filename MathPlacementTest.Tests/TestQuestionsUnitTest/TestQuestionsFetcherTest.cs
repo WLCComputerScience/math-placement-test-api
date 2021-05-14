@@ -21,14 +21,19 @@ namespace MathPlacementTest.Tests
         public void GetTestQuestions_GivenInvalidTestId_ReturnNull()
         {
             //Arrange
+            GetQuestionsParams getQuestionsParams = new GetQuestionsParams
+            {
+                TestId = 5
+            };
+
             var testToReturn = fixture.Create<Test>();
             fixture.Freeze<Mock<ITestQuestionsDataFetcher>>()
-                .Setup(mock => mock.GetTest(5)) // choose an invalid testId
+                .Setup(mock => mock.GetTest(getQuestionsParams)) // choose an invalid testId
                 .Returns(testToReturn);
 
             var questionsToReturn = fixture.CreateMany<Questions>();
             fixture.Freeze<Mock<ITestQuestionsDataFetcher>>()
-                .Setup(mock => mock.GetQuestions(5)) // choose an invalid testId
+                .Setup(mock => mock.GetQuestions(getQuestionsParams)) // choose an invalid testId
                 .Returns(questionsToReturn);
 
             TestQuestionView testQuestionViewToReturn = new TestQuestionView()
@@ -41,7 +46,7 @@ namespace MathPlacementTest.Tests
 
             //Act
             var service = fixture.Create<ITestQuestionsFetcherService>();
-            var testQuestionView = service.GetTestQuestions(5); // choose an invalid testId
+            var testQuestionView = service.GetTestQuestions(getQuestionsParams); // choose an invalid testId
 
             //Assert
             testQuestionView.Should().BeEquivalentTo(testQuestionViewToReturn);
@@ -51,14 +56,19 @@ namespace MathPlacementTest.Tests
         public void GetTestQustions_GivenTestId_ReturnTestQuestionView()
         {
             //Arrange
+            GetQuestionsParams getQuestionsParams = new GetQuestionsParams
+            {
+                TestId = 1
+            };
+
             var testToReturn = fixture.Create<Test>();
             fixture.Freeze<Mock<ITestQuestionsDataFetcher>>()
-                .Setup(mock => mock.GetTest(1)) // choose a valid testId
+                .Setup(mock => mock.GetTest(getQuestionsParams)) // choose a valid testId
                 .Returns(testToReturn);
 
             var questionsToReturn = fixture.CreateMany<Questions>();
             fixture.Freeze<Mock<ITestQuestionsDataFetcher>>()
-                .Setup(mock => mock.GetQuestions(1)) // choose a valid testId
+                .Setup(mock => mock.GetQuestions(getQuestionsParams)) // choose a valid testId
                 .Returns(questionsToReturn);
 
             TestQuestionView testQuestionViewToReturn = new TestQuestionView()
@@ -71,7 +81,7 @@ namespace MathPlacementTest.Tests
 
             //Act
             var service = fixture.Create<ITestQuestionsFetcherService>();
-            var testQuestionView = service.GetTestQuestions(1); // choose a valid testId
+            var testQuestionView = service.GetTestQuestions(getQuestionsParams); // choose a valid testId
 
             //Assert
             testQuestionView.Should().BeEquivalentTo(testQuestionViewToReturn);
