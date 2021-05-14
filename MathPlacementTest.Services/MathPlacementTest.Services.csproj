@@ -9,6 +9,7 @@
     <PackageReference Include="FluentAssertions" Version="5.10.3" />
     <PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="5.2.7" />
     <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="8.0.22" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -18,5 +19,9 @@
   <ItemGroup>
     <Folder Include="Objects\TestQuestions\" />
     <Folder Include="Services\TestQuestions\" />
+    <Folder Include="Objects\StudentDetails\" />
+    <Folder Include="Services\StudentDetails\" />
+    <Folder Include="Services\InfoGetPastCourses\" />
+    <Folder Include="Objects\PastCourses\" />
   </ItemGroup>
 </Project>

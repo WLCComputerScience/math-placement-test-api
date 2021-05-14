@@ -40,7 +40,7 @@ namespace MathPlacementTest.Tests
             };
 
             //Act
-            var service = fixture.Create<TestQuestionsFetcherService>();
+            var service = fixture.Create<ITestQuestionsFetcherService>();
             var testQuestionView = service.GetTestQuestions(5); // choose an invalid testId
 
             //Assert
@@ -70,7 +70,7 @@ namespace MathPlacementTest.Tests
             };
 
             //Act
-            var service = fixture.Create<TestQuestionsFetcherService>();
+            var service = fixture.Create<ITestQuestionsFetcherService>();
             var testQuestionView = service.GetTestQuestions(1); // choose a valid testId
 
             //Assert

@@ -7,7 +7,7 @@ namespace MathPlacementTest.Services
 {
     public interface ITestQuestionsDataFetcher
     {
-        public Test GetTest(int testId);
-        public IEnumerable<Questions> GetQuestions(int testId);
+        public Test GetTest(GetQuestionsParams getQuestionsParams);
+        public IEnumerable<Questions> GetQuestions(GetQuestionsParams getQuestionsParams);
     }
 }

@@ -30,7 +30,7 @@ namespace MathPlacementTest.Tests
                 StudentId = 0,
                 ChosenClass = fixture.Create<string>()
             };
-            var updatedStudentPlacement = service.updateStudentPlacement(studentPlacementParams);
+            var updatedStudentPlacement = service.UpdateStudentPlacement(studentPlacementParams);
 
             //Assert
             updatedStudentPlacement.Should().BeNull();
@@ -46,7 +46,7 @@ namespace MathPlacementTest.Tests
                 StudentId = -1,
                 ChosenClass = fixture.Create<string>()
             };
-            var updatedStudentPlacement = service.updateStudentPlacement(studentPlacementParams);
+            var updatedStudentPlacement = service.UpdateStudentPlacement(studentPlacementParams);
 
             //Assert
             updatedStudentPlacement.Should().BeNull();
@@ -62,7 +62,7 @@ namespace MathPlacementTest.Tests
                 StudentId = fixture.Create<int>(),
                 ChosenClass = null
             };
-            var updatedStudentPlacement = service.updateStudentPlacement(studentPlacementParams);
+            var updatedStudentPlacement = service.UpdateStudentPlacement(studentPlacementParams);
 
             //Assert
             updatedStudentPlacement.Should().BeNull();
@@ -78,7 +78,7 @@ namespace MathPlacementTest.Tests
                 StudentId = fixture.Create<int>(),
                 ChosenClass = ""
             };
-            var updatedStudentPlacement = service.updateStudentPlacement(studentPlacementParams);
+            var updatedStudentPlacement = service.UpdateStudentPlacement(studentPlacementParams);
 
             //Assert
             updatedStudentPlacement.Should().BeNull();
