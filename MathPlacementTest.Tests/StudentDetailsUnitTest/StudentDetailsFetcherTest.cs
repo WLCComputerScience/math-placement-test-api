@@ -21,19 +21,24 @@ namespace MathPlacementTest.Tests
         public void GetStudentDetails_GivenInvalidStudentId_ReturnNull()
         {
             //Arrange
+            GetStudentParams getStudentParams = new GetStudentParams
+            {
+                StudentId = 100
+            };
+
             var studentToReturn = fixture.Create<Student>();
             fixture.Freeze<Mock<IStudentDetailsDataFetcher>>()
-                .Setup(mock => mock.GetStudent(100)) // choose an invalid studentId
+                .Setup(mock => mock.GetStudent(getStudentParams)) // choose an invalid studentId
                 .Returns(studentToReturn);
 
             var studentAnswersToReturn = fixture.CreateMany<StudentAnswers>();
             fixture.Freeze<Mock<IStudentDetailsDataFetcher>>()
-                .Setup(mock => mock.GetStudentAnswers(100)) // choose an invalid studentId
+                .Setup(mock => mock.GetStudentAnswers(getStudentParams)) // choose an invalid studentId
                 .Returns(studentAnswersToReturn);
 
             var titleToReturn = fixture.Create<String>();
             fixture.Freeze<Mock<IStudentDetailsDataFetcher>>()
-                .Setup(mock => mock.GetTestName(100)) // choose an invalid studentId
+                .Setup(mock => mock.GetTestName(getStudentParams)) // choose an invalid studentId
                 .Returns(titleToReturn);
 
             StudentInfo studentInfo = new StudentInfo()
@@ -58,7 +63,7 @@ namespace MathPlacementTest.Tests
 
             //Act
             var service = fixture.Create<IStudentDetailsFetcherService>();
-            var studentDetailsView = service.GetStudentDetails(100); // choose an invalid studentId
+            var studentDetailsView = service.GetStudentDetails(getStudentParams); // choose an invalid studentId
 
             //Assert
             studentDetailsView.Should().BeEquivalentTo(studentDetailsViewToReturn);
@@ -68,19 +73,24 @@ namespace MathPlacementTest.Tests
         public void GetStudentDetails_GivenStudentId_ReturnResultView()
         {
             //Arrange
+            GetStudentParams getStudentParams = new GetStudentParams
+            {
+                StudentId = 100
+            };
+
             var studentToReturn = fixture.Create<Student>();
             fixture.Freeze<Mock<IStudentDetailsDataFetcher>>()
-                .Setup(mock => mock.GetStudent(1)) // choose a valid studentId
+                .Setup(mock => mock.GetStudent(getStudentParams)) // choose a valid studentId
                 .Returns(studentToReturn);
 
             var studentAnswersToReturn = fixture.CreateMany<StudentAnswers>();
             fixture.Freeze<Mock<IStudentDetailsDataFetcher>>()
-                .Setup(mock => mock.GetStudentAnswers(1)) // choose a valid studentId
+                .Setup(mock => mock.GetStudentAnswers(getStudentParams)) // choose a valid studentId
                 .Returns(studentAnswersToReturn);
 
             var titleToReturn = fixture.Create<String>();
             fixture.Freeze<Mock<IStudentDetailsDataFetcher>>()
-                .Setup(mock => mock.GetTestName(1)) // choose a valid studentId
+                .Setup(mock => mock.GetTestName(getStudentParams)) // choose a valid studentId
                 .Returns(titleToReturn);
 
             StudentInfo studentInfo = new StudentInfo()
@@ -105,7 +115,7 @@ namespace MathPlacementTest.Tests
 
             //Act
             var service = fixture.Create<IStudentDetailsFetcherService>();
-            var studentDetailsView = service.GetStudentDetails(1); // choose a valid studentId
+            var studentDetailsView = service.GetStudentDetails(getStudentParams); // choose a valid studentId
 
             //Assert
             studentDetailsView.Should().BeEquivalentTo(studentDetailsViewToReturn);
