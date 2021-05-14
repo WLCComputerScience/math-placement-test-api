@@ -26,6 +26,7 @@
 
   <ItemGroup>
     <Folder Include="TestQuestionsUnitTest\" />
+    <Folder Include="StudentDetailsUnitTest\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MathPlacementTest.Services\MathPlacementTest.Services.csproj" />

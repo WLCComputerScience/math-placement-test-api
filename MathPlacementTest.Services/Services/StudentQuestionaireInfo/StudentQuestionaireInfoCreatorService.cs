@@ -55,7 +55,7 @@ namespace MathPlacementTest.Services
             }
             else if (studentQuestionaireInfoParams.CoursesTaken.Any(course => course.PastCourseId == 1))
             {
-                //give trug test if trigh in past courses
+                //give trig test if trig in past courses
                 testToReturn.TestId = 2;
             }
             else if (studentQuestionaireInfoParams.CoursesTaken.Any(course => course.PastCourseId == 4))
@@ -79,6 +79,16 @@ namespace MathPlacementTest.Services
                         testToReturn.TestId = 1;
                         break;
                 }
+            }
+
+            //Add TestTaken to database after we determine what it is
+            success = _dataInsertorService.AddTestTakenData(studentQuestionaireInfoParams ,testToReturn);
+
+            if (!success)
+            {
+                //If database fails to save, return invalid test
+                testToReturn.TestId = -1;
+                return testToReturn;
             }
 
             return testToReturn;

@@ -106,5 +106,20 @@ namespace MathPlacementTest.Tests
             var results = createStudent.CreateStudent(testParams);
             Assert.Equal(results.StudentId, -1);
         }
-    }
+        [Fact]
+        public void CreateStudent_RepeatStudentWithinTimeLimit_ReturnNegative1()
+        {
+            StudentCreateService createStudent = fixture.Create<StudentCreateService>();
+
+            StudentCreateParams testParams = new StudentCreateParams
+            {
+                StudentFirstName = fixture.Create<string>(),
+                StudentLastName = fixture.Create<string>(),
+                StudentWLCId = fixture.Create<int>()
+            };
+            var results = createStudent.CreateStudent(testParams);
+            results = createStudent.CreateStudent(testParams);
+            Assert.Equal(results.StudentId, -1);
+        }
+    }    
 }

@@ -15,40 +15,37 @@ namespace MathPlacementTest.Services
             _dbContext = dbContext;
         }
 
-        public Test GetTest (int testId)
+        public Test GetTest (GetQuestionsParams getQuestionsParams)
         {
-            var test = _dbContext.Tests.Where(p => p.TestId == testId).FirstOrDefault();
+            var test = _dbContext.Tests.Where(p => p.TestId == getQuestionsParams.TestId).FirstOrDefault();
             return test;
         }
 
-        public IEnumerable<Questions> GetQuestions(int testId)
+        public IEnumerable<Questions> GetQuestions(GetQuestionsParams getQuestionsParams)
         {
-            var testQuestions = _dbContext.TestQuestions.Where(p => p.TestId == testId).ToList();
-            if (testQuestions.Count == 0)
-            {
-                return null;
-            }
             var questionsToInput = new List<Questions>();
 
-            foreach (var testQuestion in testQuestions)
+            var testQuestionsWithProblems = (from t in _dbContext.TestQuestions
+                                             where t.TestId == getQuestionsParams.TestId
+                                             join q in _dbContext.Questions
+                                             on t.QuestionId equals q.QuestionId
+                                             select new
+                                             {
+                                                 QuestionId = t.QuestionId,
+                                                 Problem = q.Problem
+                                             }
+                                             ).ToList();
+
+            foreach(var info in testQuestionsWithProblems)
             {
-                var questions = _dbContext.Questions.Where(p => p.QuestionId == testQuestion.QuestionId).ToList();
-
-                if (questions.Count == 0)
+                Questions questionUpdated = new Questions()
                 {
-                    return null;
-                }
-
-                foreach (var question in questions)
-                {
-                    Questions questionUpdated = new Questions()
-                    {
-                        QuestionId = question.QuestionId,
-                        Problem = question.Problem
-                    };
-                    questionsToInput.Add(questionUpdated);
-                }
+                    QuestionId = info.QuestionId,
+                    Problem = info.Problem
+                };
+                questionsToInput.Add(questionUpdated);
             }
+
             return questionsToInput;
         }
     }

@@ -233,6 +233,78 @@ namespace MathPlacementTest.Tests
         }
 
         [Fact]
+        public void AddQuestionaireData_GivenValidParamsPastCourseId1AndPastCourseId3_ReturnValidTestId4()
+        {
+            //Highest PastCourseID is what is considered
+            //Arrange
+            var advancedCourse = fixture.Create<string>();
+            var desiredClass = fixture.Create<string>();
+            var gradeInAdvancedCourse = fixture.Create<string>();
+            var hadMathInLastYear = fixture.Create<bool>();
+            var studentId = fixture.Create<long>();
+            IEnumerable<PastCourse> coursesTaken = new List<PastCourse>() {
+                new PastCourse() { PastCourseId = 1, Description = fixture.Create<string>() },
+                new PastCourse() { PastCourseId = 3, Description = fixture.Create<string>() }
+            };
+            var testTestInfo = new StudentQuestionaireInfoParams()
+            {
+                AdvancedCourse = advancedCourse,
+                CoursesTaken = coursesTaken,
+                DesiredClass = desiredClass,
+                GradeInAdvancedCourse = gradeInAdvancedCourse,
+                HadMathInLastYear = hadMathInLastYear,
+                StudentId = studentId
+            };
+
+            fixture.Freeze<Mock<IStudentQuestionaireDataInsertorService>>()
+                .Setup(mock => mock.AddQuestionaireData(It.IsAny<StudentQuestionaireInfoParams>()))
+                .Returns(true);
+
+            //Act
+            var service = fixture.Create<StudentQuestionaireInfoCreatorService>();
+            var testInfo = service.AddQuestionaireInfo(testTestInfo);
+
+            //Assert
+            testInfo.TestId.Should().Be(4);
+        }
+
+        [Fact]
+        public void AddQuestionaireData_GivenValidParamsPastCourseId3AndPastCourseId1_ReturnValidTestId4()
+        {
+            //Highest PastCourseID is what is considered
+            //Arrange
+            var advancedCourse = fixture.Create<string>();
+            var desiredClass = fixture.Create<string>();
+            var gradeInAdvancedCourse = fixture.Create<string>();
+            var hadMathInLastYear = fixture.Create<bool>();
+            var studentId = fixture.Create<long>();
+            IEnumerable<PastCourse> coursesTaken = new List<PastCourse>() {
+                new PastCourse() { PastCourseId = 3, Description = fixture.Create<string>() },
+                new PastCourse() { PastCourseId = 1, Description = fixture.Create<string>() }
+            };
+            var testTestInfo = new StudentQuestionaireInfoParams()
+            {
+                AdvancedCourse = advancedCourse,
+                CoursesTaken = coursesTaken,
+                DesiredClass = desiredClass,
+                GradeInAdvancedCourse = gradeInAdvancedCourse,
+                HadMathInLastYear = hadMathInLastYear,
+                StudentId = studentId
+            };
+
+            fixture.Freeze<Mock<IStudentQuestionaireDataInsertorService>>()
+                .Setup(mock => mock.AddQuestionaireData(It.IsAny<StudentQuestionaireInfoParams>()))
+                .Returns(true);
+
+            //Act
+            var service = fixture.Create<StudentQuestionaireInfoCreatorService>();
+            var testInfo = service.AddQuestionaireInfo(testTestInfo);
+
+            //Assert
+            testInfo.TestId.Should().Be(4);
+        }
+
+        [Fact]
         public void AddQuestionaireData_GivenValidParamsPastCourseId4AndDesiredCourseCalc3_ReturnValidTestId4()
         {
             //Highest PastCourseID is what is considered
