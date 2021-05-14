@@ -64,7 +64,7 @@ namespace MathPlacementTest.Api.Controllers
         }
 
         [HttpPost]
-        [Route("Update")]
+        [Route("UpdateStudentPlacement")]
         public AdminUpdateStudentPlacementView UpdateStudentPlacement([FromForm] AdminUpdateStudentPlacementParams updateStudentPlacementParams)
         {
             return _adminUpdateStudentPlacement.UpdateStudentPlacement(updateStudentPlacementParams);
