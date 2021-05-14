@@ -54,6 +54,8 @@ namespace MathPlacementTest.Api
             services.AddScoped<IInfoGetPastCoursesDataFetcher, InfoGetPastCoursesDataFetcher>();
             services.AddScoped<IInfoGetPastCoursesFetcherService, InfoGetPastCoursesFetcherService>();
             services.AddScoped<IEmailReportService, EmailReportService>();
+            services.AddScoped<IGetStudentResultSummary, GetStudentResultSummaryService>();
+            services.AddScoped<IStudentResultSummaryDataFetcher, StudentResultSummaryDataFetcher>();
 
             services.AddMvcCore().AddApiExplorer();
             services.AddSwaggerGen();

@@ -15,16 +15,16 @@ namespace MathPlacementTest.Services
             _dbContext = dbContext;
         }
 
-        public Student GetStudent(int studentId)
+        public Student GetStudent(GetStudentParams getStudentParams)
         {
-            var student = _dbContext.Students.Where(p => p.StudentId == studentId).FirstOrDefault();
+            var student = _dbContext.Students.Where(p => p.StudentId == getStudentParams.StudentId).FirstOrDefault();
             return student;
         }
 
-        public string GetTestName(int studentId)
+        public string GetTestName(GetStudentParams getStudentParams)
         {
             var studentsWithTests = (from s in _dbContext.Students
-                                     where s.StudentId == studentId
+                                     where s.StudentId == getStudentParams.StudentId
                                      join t in _dbContext.Tests
                                      on s.TestTaken equals t.TestId
                                      select new
@@ -41,12 +41,12 @@ namespace MathPlacementTest.Services
             return studentsWithTests.Title;
         }
 
-        public IEnumerable<StudentAnswers> GetStudentAnswers(int studentId)
+        public IEnumerable<StudentAnswers> GetStudentAnswers(GetStudentParams getStudentParams)
         {
             var answersToInput = new List<StudentAnswers>();
 
             var studentsAnswersWithCorrectAnswer = (from s in _dbContext.StudentAnswers
-                                                    where s.StudentId == studentId
+                                                    where s.StudentId == getStudentParams.StudentId
                                                     join q in _dbContext.Questions
                                                     on s.QuestionId equals q.QuestionId
                                                     select new

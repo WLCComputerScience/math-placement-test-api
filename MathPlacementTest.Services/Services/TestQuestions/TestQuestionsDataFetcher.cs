@@ -15,18 +15,18 @@ namespace MathPlacementTest.Services
             _dbContext = dbContext;
         }
 
-        public Test GetTest (int testId)
+        public Test GetTest (GetQuestionsParams getQuestionsParams)
         {
-            var test = _dbContext.Tests.Where(p => p.TestId == testId).FirstOrDefault();
+            var test = _dbContext.Tests.Where(p => p.TestId == getQuestionsParams.TestId).FirstOrDefault();
             return test;
         }
 
-        public IEnumerable<Questions> GetQuestions(int testId)
+        public IEnumerable<Questions> GetQuestions(GetQuestionsParams getQuestionsParams)
         {
             var questionsToInput = new List<Questions>();
 
             var testQuestionsWithProblems = (from t in _dbContext.TestQuestions
-                                             where t.TestId == testId
+                                             where t.TestId == getQuestionsParams.TestId
                                              join q in _dbContext.Questions
                                              on t.QuestionId equals q.QuestionId
                                              select new

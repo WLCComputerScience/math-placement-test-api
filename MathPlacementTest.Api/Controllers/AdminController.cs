@@ -64,7 +64,7 @@ namespace MathPlacementTest.Api.Controllers
         }
 
         [HttpPost]
-        [Route("Update")]
+        [Route("UpdateStudentPlacement")]
         public AdminUpdateStudentPlacementView UpdateStudentPlacement([FromForm] AdminUpdateStudentPlacementParams updateStudentPlacementParams)
         {
             return _adminUpdateStudentPlacement.UpdateStudentPlacement(updateStudentPlacementParams);
@@ -74,7 +74,7 @@ namespace MathPlacementTest.Api.Controllers
         [Route("GetStudentDetails")]
         public StudentDetailsView GetStudentDetails([FromForm] GetStudentParams getStudentParams)
         {
-            return _studentDetailsFetcherService.GetStudentDetails(getStudentParams.StudentId);
+            return _studentDetailsFetcherService.GetStudentDetails(getStudentParams);
         }
     }
 }
