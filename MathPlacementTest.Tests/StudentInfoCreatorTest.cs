@@ -153,6 +153,10 @@ namespace MathPlacementTest.Tests
                 .Setup(mock => mock.AddQuestionaireData(It.IsAny<StudentQuestionaireInfoParams>()))
                 .Returns(true);
 
+            fixture.Freeze<Mock<IStudentQuestionaireDataInsertorService>>()
+                .Setup(mock => mock.AddTestTakenData(It.IsAny<StudentQuestionaireInfoParams>(), It.IsAny<TestInfo>()))
+                .Returns(true);
+
             //Act
             var service = fixture.Create<StudentQuestionaireInfoCreatorService>();
             var testInfo = service.AddQuestionaireInfo(testTestInfo);
@@ -189,6 +193,10 @@ namespace MathPlacementTest.Tests
                 .Setup(mock => mock.AddQuestionaireData(It.IsAny<StudentQuestionaireInfoParams>()))
                 .Returns(true);
 
+            fixture.Freeze<Mock<IStudentQuestionaireDataInsertorService>>()
+                .Setup(mock => mock.AddTestTakenData(It.IsAny<StudentQuestionaireInfoParams>(), It.IsAny<TestInfo>()))
+                .Returns(true);
+
             //Act
             var service = fixture.Create<StudentQuestionaireInfoCreatorService>();
             var testInfo = service.AddQuestionaireInfo(testTestInfo);
@@ -222,6 +230,10 @@ namespace MathPlacementTest.Tests
 
             fixture.Freeze<Mock<IStudentQuestionaireDataInsertorService>>()
                 .Setup(mock => mock.AddQuestionaireData(It.IsAny<StudentQuestionaireInfoParams>()))
+                .Returns(true);
+
+            fixture.Freeze<Mock<IStudentQuestionaireDataInsertorService>>()
+                .Setup(mock => mock.AddTestTakenData(It.IsAny<StudentQuestionaireInfoParams>(), It.IsAny<TestInfo>()))
                 .Returns(true);
 
             //Act
@@ -260,6 +272,10 @@ namespace MathPlacementTest.Tests
                 .Setup(mock => mock.AddQuestionaireData(It.IsAny<StudentQuestionaireInfoParams>()))
                 .Returns(true);
 
+            fixture.Freeze<Mock<IStudentQuestionaireDataInsertorService>>()
+                .Setup(mock => mock.AddTestTakenData(It.IsAny<StudentQuestionaireInfoParams>(), It.IsAny<TestInfo>()))
+                .Returns(true);
+
             //Act
             var service = fixture.Create<StudentQuestionaireInfoCreatorService>();
             var testInfo = service.AddQuestionaireInfo(testTestInfo);
@@ -294,6 +310,10 @@ namespace MathPlacementTest.Tests
 
             fixture.Freeze<Mock<IStudentQuestionaireDataInsertorService>>()
                 .Setup(mock => mock.AddQuestionaireData(It.IsAny<StudentQuestionaireInfoParams>()))
+                .Returns(true);
+
+            fixture.Freeze<Mock<IStudentQuestionaireDataInsertorService>>()
+                .Setup(mock => mock.AddTestTakenData(It.IsAny<StudentQuestionaireInfoParams>(), It.IsAny<TestInfo>()))
                 .Returns(true);
 
             //Act
@@ -331,6 +351,10 @@ namespace MathPlacementTest.Tests
                 .Setup(mock => mock.AddQuestionaireData(It.IsAny<StudentQuestionaireInfoParams>()))
                 .Returns(true);
 
+            fixture.Freeze<Mock<IStudentQuestionaireDataInsertorService>>()
+                .Setup(mock => mock.AddTestTakenData(It.IsAny<StudentQuestionaireInfoParams>(), It.IsAny<TestInfo>()))
+                .Returns(true);
+
             //Act
             var service = fixture.Create<StudentQuestionaireInfoCreatorService>();
             var testInfo = service.AddQuestionaireInfo(testTestInfo);
@@ -364,6 +388,10 @@ namespace MathPlacementTest.Tests
 
             fixture.Freeze<Mock<IStudentQuestionaireDataInsertorService>>()
                 .Setup(mock => mock.AddQuestionaireData(It.IsAny<StudentQuestionaireInfoParams>()))
+                .Returns(true);
+
+            fixture.Freeze<Mock<IStudentQuestionaireDataInsertorService>>()
+                .Setup(mock => mock.AddTestTakenData(It.IsAny<StudentQuestionaireInfoParams>(), It.IsAny<TestInfo>()))
                 .Returns(true);
 
             //Act
@@ -401,6 +429,10 @@ namespace MathPlacementTest.Tests
                 .Setup(mock => mock.AddQuestionaireData(It.IsAny<StudentQuestionaireInfoParams>()))
                 .Returns(true);
 
+            fixture.Freeze<Mock<IStudentQuestionaireDataInsertorService>>()
+                .Setup(mock => mock.AddTestTakenData(It.IsAny<StudentQuestionaireInfoParams>(), It.IsAny<TestInfo>()))
+                .Returns(true);
+
             //Act
             var service = fixture.Create<StudentQuestionaireInfoCreatorService>();
             var testInfo = service.AddQuestionaireInfo(testTestInfo);
@@ -436,6 +468,10 @@ namespace MathPlacementTest.Tests
                 .Setup(mock => mock.AddQuestionaireData(It.IsAny<StudentQuestionaireInfoParams>()))
                 .Returns(true);
 
+            fixture.Freeze<Mock<IStudentQuestionaireDataInsertorService>>()
+                .Setup(mock => mock.AddTestTakenData(It.IsAny<StudentQuestionaireInfoParams>(), It.IsAny<TestInfo>()))
+                .Returns(true);
+
             //Act
             var service = fixture.Create<StudentQuestionaireInfoCreatorService>();
             var testInfo = service.AddQuestionaireInfo(testTestInfo);
@@ -469,6 +505,10 @@ namespace MathPlacementTest.Tests
 
             fixture.Freeze<Mock<IStudentQuestionaireDataInsertorService>>()
                 .Setup(mock => mock.AddQuestionaireData(It.IsAny<StudentQuestionaireInfoParams>()))
+                .Returns(true);
+
+            fixture.Freeze<Mock<IStudentQuestionaireDataInsertorService>>()
+                .Setup(mock => mock.AddTestTakenData(It.IsAny<StudentQuestionaireInfoParams>(), It.IsAny<TestInfo>()))
                 .Returns(true);
 
             //Act
