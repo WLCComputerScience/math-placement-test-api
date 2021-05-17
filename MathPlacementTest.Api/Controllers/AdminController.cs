@@ -19,12 +19,16 @@ namespace MathPlacementTest.Api.Controllers
         private readonly IEmailReportService _emailReportService;
         private readonly IAdminGenerateReportSenderService _adminGenerateReportSenderService;
         private readonly IStudentDetailsFetcherService _studentDetailsFetcherService;
+
+        private readonly IAdminGenerateReportDataRetrieverService _adminGenerateReportDataRetrieverService;
+
         public AdminController(IGetAllStudentService getAllStudentService,
             IAdminStudentPlacementUpdateService adminUpdateStudentPlacement, 
             IAdminGenerateReportService adminGenerateReportService,
             IEmailReportService emailReportService,
             IAdminGenerateReportSenderService adminGenerateReportSenderService,
-            IStudentDetailsFetcherService studentDetailsFetcherService)
+            IStudentDetailsFetcherService studentDetailsFetcherService,
+            IAdminGenerateReportDataRetrieverService adminGenerateReportDataRetrieverService)
         {
             _getAllStudentService = getAllStudentService;
             _adminUpdateStudentPlacement = adminUpdateStudentPlacement;
@@ -32,6 +36,7 @@ namespace MathPlacementTest.Api.Controllers
             _emailReportService = emailReportService;
             _adminGenerateReportSenderService = adminGenerateReportSenderService;
             _studentDetailsFetcherService = studentDetailsFetcherService;
+            _adminGenerateReportDataRetrieverService = adminGenerateReportDataRetrieverService;
         }
 
         [HttpPost]
@@ -60,7 +65,7 @@ namespace MathPlacementTest.Api.Controllers
         [Route("EmailReport")]
         public bool EmailReport([FromForm] EmailReportParams emailReportParams)
         {
-            return _emailReportService.EmailReport(emailReportParams);
+            return _emailReportService.EmailReport(emailReportParams, _adminGenerateReportDataRetrieverService);
         }
 
         [HttpPost]
