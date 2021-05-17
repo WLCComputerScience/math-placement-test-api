@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MathPlacementTest.Services.Objects;
+using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Mail;
@@ -8,19 +9,25 @@ namespace MathPlacementTest.Services
 {
     public class EmailReportService : IEmailReportService
     {
-        public bool EmailReport(EmailReportParams emailReportParams)
+        public bool EmailReport(EmailReportParams emailReportParams, IAdminGenerateReportDataRetrieverService adminGenerateReportService)
         {
+            AdminGenerateReportService _adminGenerateReportService = new AdminGenerateReportService(adminGenerateReportService);
             //Tests
             if (string.IsNullOrEmpty(emailReportParams.ToEmailAddress))
             {
-                emailReportParams.errorMessage = "Null or empty email address";
                 return false;
             }
-            if (string.IsNullOrEmpty(emailReportParams.FilePath))
+            DateTime StartDate = DateTime.Parse(emailReportParams.StartDate);
+            DateTime EndDate = DateTime.Parse(emailReportParams.EndDate);
+
+            GenerateReportParams generateReportParams = new GenerateReportParams()
             {
-                emailReportParams.errorMessage = "Null or empty file path";
-                return false;
-            }
+                FileName = "report",
+                StartDate = StartDate,
+                EndDate = EndDate
+            };
+
+            _adminGenerateReportService.GenerateReport(generateReportParams);
 
             MailMessage message = new MailMessage();
             SmtpClient smtp = new SmtpClient();
@@ -32,7 +39,6 @@ namespace MathPlacementTest.Services
             }
             catch (Exception e)
             {
-                emailReportParams.errorMessage = "Incorrect email address format";
                 return false;
             }
 
@@ -43,12 +49,11 @@ namespace MathPlacementTest.Services
             try
             {
                 System.Net.Mail.Attachment attachment;
-                attachment = new System.Net.Mail.Attachment(emailReportParams.FilePath);
+                attachment = new System.Net.Mail.Attachment(@"..\..\PlacementTestReports\"+generateReportParams.FileName+".csv");
                 message.Attachments.Add(attachment);
             }
             catch(Exception e)
             {
-                emailReportParams.errorMessage = "File not found";
                 return false;
             }
 

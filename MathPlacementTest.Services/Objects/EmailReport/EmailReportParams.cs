@@ -7,7 +7,7 @@ namespace MathPlacementTest.Services
     public class EmailReportParams
     {
         public string ToEmailAddress { get; set; }
-        public string FilePath { get; set; }
-        public string errorMessage { get; set; }
+        public string StartDate { get; set; }
+        public string EndDate { get; set; }
     }
 }

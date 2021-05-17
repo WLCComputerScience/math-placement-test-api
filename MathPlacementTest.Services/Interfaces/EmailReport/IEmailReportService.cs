@@ -6,6 +6,6 @@ namespace MathPlacementTest.Services
 {
     public interface IEmailReportService
     {
-        bool EmailReport(EmailReportParams emailReportParams);
+        bool EmailReport(EmailReportParams emailReportParams, IAdminGenerateReportDataRetrieverService adminGenerateReportService);
     }
 }
